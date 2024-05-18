@@ -2,8 +2,8 @@ package br.com.hexburger.dominio.porta.entrada.cliente;
 
 import br.com.hexburger.dominio.entidade.Cliente;
 
-public interface EncontrarClientePortaAplicacao {
+public interface BuscarClientePortaAplicacao {
 
-    Cliente encontrarCliente(String cpf);
+    Cliente buscarCliente(String cpf);
 
 }

@@ -28,8 +28,8 @@ public class ECliente implements Serializable {
         return new ECliente(cliente.getCpf(), cliente.getNome(), cliente.getEmail());
     }
 
-    public static Cliente toDomain(ECliente eCliente) {
-        return new Cliente(eCliente.getCpf(), eCliente.getNome(), eCliente.getEmail());
+    public Cliente toDomain() {
+        return new Cliente(this.getCpf(), this.getNome(), this.getEmail());
     }
 
 }

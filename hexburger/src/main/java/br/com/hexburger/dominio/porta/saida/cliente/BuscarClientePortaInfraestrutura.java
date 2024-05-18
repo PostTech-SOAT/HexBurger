@@ -4,8 +4,8 @@ import br.com.hexburger.dominio.entidade.Cliente;
 
 import java.util.Optional;
 
-public interface EncontrarClientePortaInfraestrutura {
+public interface BuscarClientePortaInfraestrutura {
 
-    Optional<Cliente> encontrarCliente(String cpf);
+    Optional<Cliente> buscarCliente(String cpf);
 
 }

@@ -1,12 +1,12 @@
-package br.com.hexburger.adaptador.conduzido.infraestrutura.adaptador;
+package br.com.hexburger.adaptador.conduzido.infraestrutura.adaptador.cliente;
 
 import br.com.hexburger.adaptador.conduzido.infraestrutura.repository.ClienteRepository;
 import br.com.hexburger.dominio.entidade.Cliente;
 import br.com.hexburger.dominio.porta.saida.cliente.CriarClientePortaInfraestrutura;
+import br.com.hexburger.dominio.util.exception.ConflictException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import static br.com.hexburger.adaptador.conduzido.infraestrutura.entidade.ECliente.toDomain;
 import static br.com.hexburger.adaptador.conduzido.infraestrutura.entidade.ECliente.toEntity;
 
 @Component
@@ -17,6 +17,9 @@ public class CriarClienteAdaptadorInfraestrutura implements CriarClientePortaInf
 
     @Override
     public Cliente criarCliente(Cliente cliente) {
-        return toDomain(repository.save(toEntity(cliente)));
+        repository.findById(cliente.getCpf()).ifPresent(eCliente -> {
+            throw new ConflictException("Cliente já cadastrado");
+        });
+        return repository.save(toEntity(cliente)).toDomain();
     }
 }

@@ -1,4 +1,4 @@
-package br.com.hexburger.dominio.useCase;
+package br.com.hexburger.dominio.useCase.cliente;
 
 import br.com.hexburger.dominio.entidade.Cliente;
 import br.com.hexburger.dominio.porta.saida.cliente.CriarClientePortaInfraestrutura;
