@@ -12,7 +12,7 @@ Link para o Miro: https://miro.com/app/board/uXjVKYystBE=/
 
 Instruções para executar o projeto:
 - Clonar o projeto
-- A partir do diretório raíz do projeto, executar o build do Dockerfile
-  - ``` docker build -t hexburger:1 . ```
+- A partir do diretório raíz do projeto, executar o build do docker compose
+  - ``` docker compose build ```
 - Após a imagem devidamente criada, subir a aplicação via docker compose
   - ``` docker compose up ```
