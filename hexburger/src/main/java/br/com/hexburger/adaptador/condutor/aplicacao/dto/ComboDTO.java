@@ -17,8 +17,8 @@ public class ComboDTO {
 
     private final BigDecimal valorTotal;
 
-    public Combo toDominio() {
-        return new Combo(produtos.stream().map(produto -> produto.toDominio(produto.getId())).toList());
+    public Combo toDomain() {
+        return new Combo(produtos.stream().map(produto -> produto.toDomain(produto.getId())).toList());
     }
 
     public static ComboDTO toDTO(Combo combo) {

@@ -21,7 +21,7 @@ public class PedidoController {
     @PostMapping
     public ResponseEntity<Object> criarPedido(@RequestBody PedidoDTO pedidoDTO) {
         try {
-            return ResponseEntity.ok(toDTO(criarPedidoPortaAplicacao.criarPedido(pedidoDTO.toDominio())));
+            return ResponseEntity.ok(toDTO(criarPedidoPortaAplicacao.criarPedido(pedidoDTO.toDomain())));
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(e.getMessage(), BAD_REQUEST);
         }

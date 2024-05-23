@@ -25,8 +25,8 @@ public class PedidoDTO {
 
     private final LocalDateTime dataPedido;
 
-    public Pedido toDominio() {
-        return new Pedido(combos.stream().map(ComboDTO::toDominio).toList(), cliente != null ? cliente.toDominio() : null);
+    public Pedido toDomain() {
+        return new Pedido(combos.stream().map(ComboDTO::toDomain).toList(), cliente != null ? cliente.toDomain() : null);
     }
 
     public static PedidoDTO toDTO(Pedido pedido) {

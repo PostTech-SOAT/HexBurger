@@ -14,7 +14,7 @@ public class ClienteDTO {
 
     private String email;
 
-    public Cliente toDominio() {
+    public Cliente toDomain() {
         return new Cliente(cpf, nome, email);
     }
 

@@ -24,7 +24,7 @@ public class ClienteController {
     @PostMapping
     public ResponseEntity<Object> criarCliente(@RequestBody ClienteDTO clienteDTO) {
         try {
-            return ResponseEntity.ok(toDTO(criarClientePortaAplicacao.criarCliente(clienteDTO.toDominio())));
+            return ResponseEntity.ok(toDTO(criarClientePortaAplicacao.criarCliente(clienteDTO.toDomain())));
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(e.getMessage(), BAD_REQUEST);
         } catch (ConflictException e) {

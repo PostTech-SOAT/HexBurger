@@ -28,7 +28,7 @@ public class ProdutoController {
     @PostMapping
     public ResponseEntity<Object> criarProduto(@RequestBody ProdutoDTO produtoDTO) {
         try {
-            return ResponseEntity.ok(toDTO(criarProdutoPortaAplicacao.criarProduto(produtoDTO.toDominio())));
+            return ResponseEntity.ok(toDTO(criarProdutoPortaAplicacao.criarProduto(produtoDTO.toDomain())));
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(e.getMessage(), BAD_REQUEST);
         } catch (ConflictException e) {
@@ -39,7 +39,7 @@ public class ProdutoController {
     @PutMapping("/{id}")
     public ResponseEntity<Object> editarProduto(@PathVariable String id, @RequestBody ProdutoDTO produtoDTO) {
         try {
-            return ResponseEntity.ok(toDTO(editarProdutoPortaAplicacao.editarProduto(produtoDTO.toDominio(id))));
+            return ResponseEntity.ok(toDTO(editarProdutoPortaAplicacao.editarProduto(produtoDTO.toDomain(id))));
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(e.getMessage(), BAD_REQUEST);
         } catch (ResourceNotFoundException e) {

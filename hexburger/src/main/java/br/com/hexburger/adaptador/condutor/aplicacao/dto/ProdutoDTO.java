@@ -21,11 +21,11 @@ public class ProdutoDTO {
 
     private Categoria categoria;
 
-    public Produto toDominio(String id) {
+    public Produto toDomain(String id) {
         return new Produto(id, nome, descricao, valor, categoria);
     }
 
-    public Produto toDominio() {
+    public Produto toDomain() {
         return new Produto(nome, descricao, valor, categoria);
     }
 
