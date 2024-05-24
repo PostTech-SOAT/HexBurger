@@ -1,17 +1,19 @@
 package br.com.hexburger.dominio.useCase.produto;
 
-import br.com.hexburger.dominio.porta.saida.produto.RemoverProdutoPortaInfraestrutura;
+import br.com.hexburger.dominio.porta.saida.ProdutoPortaInfraestrutura;
+import br.com.hexburger.dominio.util.exception.ResourceNotFoundException;
 
 public class RemoverProdutoUseCase {
 
-    private final RemoverProdutoPortaInfraestrutura removerProdutoPortaInfraestrutura;
+    private final ProdutoPortaInfraestrutura produtoPortaInfraestrutura;
 
-    public RemoverProdutoUseCase(RemoverProdutoPortaInfraestrutura removerProdutoPortaInfraestrutura) {
-        this.removerProdutoPortaInfraestrutura = removerProdutoPortaInfraestrutura;
+    public RemoverProdutoUseCase(ProdutoPortaInfraestrutura produtoPortaInfraestrutura) {
+        this.produtoPortaInfraestrutura = produtoPortaInfraestrutura;
     }
 
     public void removerProduto(String id) {
-        removerProdutoPortaInfraestrutura.removerProduto(id);
+        produtoPortaInfraestrutura.buscarProdutoPorId(id).orElseThrow(() -> new ResourceNotFoundException("Produto não encontrado"));
+        produtoPortaInfraestrutura.removerProduto(id);
     }
 
 }

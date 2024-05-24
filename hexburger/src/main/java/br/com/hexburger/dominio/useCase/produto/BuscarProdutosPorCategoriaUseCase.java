@@ -2,20 +2,20 @@ package br.com.hexburger.dominio.useCase.produto;
 
 import br.com.hexburger.dominio.entidade.Categoria;
 import br.com.hexburger.dominio.entidade.Produto;
-import br.com.hexburger.dominio.porta.saida.produto.BuscarProdutosPorCategoriaPortaInfraestrutura;
+import br.com.hexburger.dominio.porta.saida.ProdutoPortaInfraestrutura;
 
 import java.util.List;
 
 public class BuscarProdutosPorCategoriaUseCase {
 
-    private final BuscarProdutosPorCategoriaPortaInfraestrutura buscarProdutosPorCategoriaPortaInfraestrutura;
+    private final ProdutoPortaInfraestrutura produtoPortaInfraestrutura;
 
-    public BuscarProdutosPorCategoriaUseCase(BuscarProdutosPorCategoriaPortaInfraestrutura buscarProdutosPorCategoriaPortaInfraestrutura) {
-        this.buscarProdutosPorCategoriaPortaInfraestrutura = buscarProdutosPorCategoriaPortaInfraestrutura;
+    public BuscarProdutosPorCategoriaUseCase(ProdutoPortaInfraestrutura produtoPortaInfraestrutura) {
+        this.produtoPortaInfraestrutura = produtoPortaInfraestrutura;
     }
 
     public List<Produto> buscarProdutosPorCategoria(Categoria categoria) {
-        return buscarProdutosPorCategoriaPortaInfraestrutura.buscarProdutosPorCategoria(categoria);
+        return produtoPortaInfraestrutura.buscarProdutosPorCategoria(categoria);
     }
 
 }
