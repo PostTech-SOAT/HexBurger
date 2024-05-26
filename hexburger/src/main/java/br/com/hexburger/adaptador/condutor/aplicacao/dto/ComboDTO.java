@@ -1,20 +1,25 @@
 package br.com.hexburger.adaptador.condutor.aplicacao.dto;
 
 import br.com.hexburger.dominio.entidade.Combo;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+import static io.swagger.v3.oas.annotations.media.Schema.AccessMode.READ_ONLY;
+
 @Data
 @AllArgsConstructor
 public class ComboDTO {
 
+    @Schema(accessMode = READ_ONLY)
     private final String id;
 
     private final List<ProdutoDTO> produtos;
 
+    @Schema(accessMode = READ_ONLY)
     private final BigDecimal valorTotal;
 
     public Combo toDomain() {

@@ -2,10 +2,13 @@ package br.com.hexburger.adaptador.condutor.aplicacao.dto;
 
 import br.com.hexburger.dominio.entidade.Categoria;
 import br.com.hexburger.dominio.entidade.Produto;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.math.BigDecimal;
+
+import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
 @Data
 @AllArgsConstructor
@@ -13,12 +16,16 @@ public class ProdutoDTO {
 
     private String id;
 
+    @Schema(example = "Hex Burger", requiredMode = REQUIRED)
     private String nome;
 
+    @Schema(example = "Pão e Hambuguer no formato hexagonal", requiredMode = REQUIRED)
     private String descricao;
 
+    @Schema(example = "20", requiredMode = REQUIRED)
     private BigDecimal valor;
 
+    @Schema(example = "LANCHE", requiredMode = REQUIRED)
     private Categoria categoria;
 
     public Produto toDomain(String id) {
