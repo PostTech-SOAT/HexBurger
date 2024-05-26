@@ -1,17 +1,17 @@
 package br.com.hexburger.dominio.useCase.pedido;
 
 import br.com.hexburger.dominio.entidade.Pedido;
-import br.com.hexburger.dominio.porta.saida.pedido.CriarPedidoPortaInfraestrutura;
+import br.com.hexburger.dominio.porta.saida.PedidoPortaInfraestrutura;
 
 public class CriarPedidoUseCase {
 
-    private final CriarPedidoPortaInfraestrutura criarPedidoPortaInfraestrutura;
+    private final PedidoPortaInfraestrutura pedidoPortaInfraestrutura;
 
-    public CriarPedidoUseCase(CriarPedidoPortaInfraestrutura criarPedidoPortaInfraestrutura) {
-        this.criarPedidoPortaInfraestrutura = criarPedidoPortaInfraestrutura;
+    public CriarPedidoUseCase(PedidoPortaInfraestrutura pedidoPortaInfraestrutura) {
+        this.pedidoPortaInfraestrutura = pedidoPortaInfraestrutura;
     }
 
     public Pedido criarPedido(Pedido pedido) {
-        return criarPedidoPortaInfraestrutura.criarPedido(pedido);
+        return pedidoPortaInfraestrutura.criarPedido(pedido);
     }
 }

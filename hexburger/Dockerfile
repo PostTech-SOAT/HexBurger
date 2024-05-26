@@ -1,0 +1,18 @@
+FROM openjdk:21-slim
+
+WORKDIR /opt/app
+
+ENV APP_HOME /opt/app
+
+# Adicionando um usuário e suas permissões
+RUN groupadd -r hexgroup && useradd -r -g hexgroup -d $APP_HOME -s /sbin/nologin hexuser
+
+RUN chown -R hexuser:hexgroup $APP_HOME
+
+RUN chmod -R 755 $APP_HOME
+
+COPY ./target/hexburger-0.0.1-SNAPSHOT.jar hexburger.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar",  "hexburger.jar", "-Xms2048M", "-Xmx3072M"]

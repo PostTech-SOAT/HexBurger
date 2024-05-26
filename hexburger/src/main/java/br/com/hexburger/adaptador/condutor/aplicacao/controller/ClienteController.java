@@ -1,8 +1,7 @@
 package br.com.hexburger.adaptador.condutor.aplicacao.controller;
 
 import br.com.hexburger.adaptador.condutor.aplicacao.dto.ClienteDTO;
-import br.com.hexburger.dominio.porta.entrada.cliente.BuscarClientePortaAplicacao;
-import br.com.hexburger.dominio.porta.entrada.cliente.CriarClientePortaAplicacao;
+import br.com.hexburger.dominio.porta.entrada.ClientePortaAplicacao;
 import br.com.hexburger.dominio.util.exception.ConflictException;
 import br.com.hexburger.dominio.util.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -18,13 +17,12 @@ import static org.springframework.http.HttpStatus.CONFLICT;
 @RequestMapping(value = "/v1/cliente")
 public class ClienteController {
 
-    private final CriarClientePortaAplicacao criarClientePortaAplicacao;
-    private final BuscarClientePortaAplicacao buscarClientePortaAplicacao;
+    private final ClientePortaAplicacao clientePortaAplicacao;
 
     @PostMapping
     public ResponseEntity<Object> criarCliente(@RequestBody ClienteDTO clienteDTO) {
         try {
-            return ResponseEntity.ok(toDTO(criarClientePortaAplicacao.criarCliente(clienteDTO.toDomain())));
+            return ResponseEntity.ok(toDTO(clientePortaAplicacao.criarCliente(clienteDTO.toDomain())));
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(e.getMessage(), BAD_REQUEST);
         } catch (ConflictException e) {
@@ -35,7 +33,7 @@ public class ClienteController {
     @GetMapping("/{cpf}")
     public ResponseEntity<ClienteDTO> buscarCliente(@PathVariable String cpf) {
         try {
-            return ResponseEntity.ok(toDTO(buscarClientePortaAplicacao.buscarCliente(cpf)));
+            return ResponseEntity.ok(toDTO(clientePortaAplicacao.buscarCliente(cpf)));
         } catch (ResourceNotFoundException e) {
             return ResponseEntity.notFound().build();
         }

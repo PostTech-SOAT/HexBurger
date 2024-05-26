@@ -1,13 +1,8 @@
 package br.com.hexburger.adaptador.condutor.aplicacao.config;
 
-import br.com.hexburger.dominio.porta.saida.cliente.BuscarClientePortaInfraestrutura;
-import br.com.hexburger.dominio.porta.saida.cliente.CriarClientePortaInfraestrutura;
-import br.com.hexburger.dominio.porta.saida.pedido.BuscarPedidosPortaInfraestrutura;
-import br.com.hexburger.dominio.porta.saida.pedido.CriarPedidoPortaInfraestrutura;
-import br.com.hexburger.dominio.porta.saida.produto.BuscarProdutosPorCategoriaPortaInfraestrutura;
-import br.com.hexburger.dominio.porta.saida.produto.CriarProdutoPortaInfraestrutura;
-import br.com.hexburger.dominio.porta.saida.produto.EditarProdutoPortaInfraestrutura;
-import br.com.hexburger.dominio.porta.saida.produto.RemoverProdutoPortaInfraestrutura;
+import br.com.hexburger.dominio.porta.saida.ClientePortaInfraestrutura;
+import br.com.hexburger.dominio.porta.saida.PedidoPortaInfraestrutura;
+import br.com.hexburger.dominio.porta.saida.ProdutoPortaInfraestrutura;
 import br.com.hexburger.dominio.useCase.cliente.BuscarClienteUseCase;
 import br.com.hexburger.dominio.useCase.cliente.CriarClienteUseCase;
 import br.com.hexburger.dominio.useCase.pedido.BuscarPedidosUseCase;
@@ -23,42 +18,42 @@ import org.springframework.context.annotation.Configuration;
 public class BeanConfiguration {
 
     @Bean
-    public CriarClienteUseCase criarClienteUseCase(CriarClientePortaInfraestrutura criarClientePortaInfraestrutura) {
-        return new CriarClienteUseCase(criarClientePortaInfraestrutura);
+    public CriarClienteUseCase criarClienteUseCase(ClientePortaInfraestrutura clientePortaInfraestrutura) {
+        return new CriarClienteUseCase(clientePortaInfraestrutura);
     }
 
     @Bean
-    public BuscarClienteUseCase buscarClienteUseCase(BuscarClientePortaInfraestrutura buscarClientePortaInfraestrutura) {
-        return new BuscarClienteUseCase(buscarClientePortaInfraestrutura);
+    public BuscarClienteUseCase buscarClienteUseCase(ClientePortaInfraestrutura clientePortaInfraestrutura) {
+        return new BuscarClienteUseCase(clientePortaInfraestrutura);
     }
 
     @Bean
-    public CriarProdutoUseCase criarProdutoUseCase(CriarProdutoPortaInfraestrutura criarProdutoPortaInfraestrutura) {
-        return new CriarProdutoUseCase(criarProdutoPortaInfraestrutura);
+    public CriarProdutoUseCase criarProdutoUseCase(ProdutoPortaInfraestrutura produtoPortaInfraestrutura) {
+        return new CriarProdutoUseCase(produtoPortaInfraestrutura);
     }
 
     @Bean
-    public EditarProdutoUseCase editarProdutoUseCase(EditarProdutoPortaInfraestrutura editarProdutoPortaInfraestrutura) {
-        return new EditarProdutoUseCase(editarProdutoPortaInfraestrutura);
+    public EditarProdutoUseCase editarProdutoUseCase(ProdutoPortaInfraestrutura produtoPortaInfraestrutura) {
+        return new EditarProdutoUseCase(produtoPortaInfraestrutura);
     }
 
     @Bean
-    public RemoverProdutoUseCase removerProdutoUseCase(RemoverProdutoPortaInfraestrutura removerProdutoPortaInfraestrutura) {
-        return new RemoverProdutoUseCase(removerProdutoPortaInfraestrutura);
+    public RemoverProdutoUseCase removerProdutoUseCase(ProdutoPortaInfraestrutura produtoPortaInfraestrutura) {
+        return new RemoverProdutoUseCase(produtoPortaInfraestrutura);
     }
 
     @Bean
-    public BuscarProdutosPorCategoriaUseCase buscarProdutosPorCategoriaUseCase(BuscarProdutosPorCategoriaPortaInfraestrutura buscarProdutosPorCategoriaPortaInfraestrutura) {
-        return new BuscarProdutosPorCategoriaUseCase(buscarProdutosPorCategoriaPortaInfraestrutura);
+    public BuscarProdutosPorCategoriaUseCase buscarProdutosPorCategoriaUseCase(ProdutoPortaInfraestrutura produtoPortaInfraestrutura) {
+        return new BuscarProdutosPorCategoriaUseCase(produtoPortaInfraestrutura);
     }
 
     @Bean
-    public CriarPedidoUseCase criarPedidoUseCase(CriarPedidoPortaInfraestrutura criarPedidoPortaInfraestrutura) {
-        return new CriarPedidoUseCase(criarPedidoPortaInfraestrutura);
+    public CriarPedidoUseCase criarPedidoUseCase(PedidoPortaInfraestrutura pedidoPortaInfraestrutura) {
+        return new CriarPedidoUseCase(pedidoPortaInfraestrutura);
     }
 
     @Bean
-    public BuscarPedidosUseCase buscarPedidosUseCase(BuscarPedidosPortaInfraestrutura buscarPedidosPortaInfraestrutura) {
-        return new BuscarPedidosUseCase(buscarPedidosPortaInfraestrutura);
+    public BuscarPedidosUseCase buscarPedidosUseCase(PedidoPortaInfraestrutura pedidoPortaInfraestrutura) {
+        return new BuscarPedidosUseCase(pedidoPortaInfraestrutura);
     }
 }
