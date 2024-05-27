@@ -1,4 +1,4 @@
-FROM openjdk:21-slim
+FROM maven:3.9.6-amazoncorretto-21-debian
 
 WORKDIR /opt/app
 
@@ -11,11 +11,17 @@ RUN chown -R hexuser:hexgroup $APP_HOME
 
 RUN chmod -R 755 $APP_HOME
 
-#Copiando o jar da aplicação
-COPY ./target/hexburger-0.0.1-SNAPSHOT.jar hexburger.jar
+#Copiando o pom.xml
+COPY pom.xml .
+
+#Copiando a aplicação
+COPY src ./src
+
+#Buildando a aplicação
+RUN mvn package -DskipTests
 
 #Expondo a porta 8080
 EXPOSE 8080
 
 #Executando a aplicação
-ENTRYPOINT ["java", "-jar",  "hexburger.jar", "-Xms2048M", "-Xmx3072M"]
+ENTRYPOINT ["java", "-jar", "/opt/app/target/hexburger-0.0.1-SNAPSHOT.jar", "-Xms2048M", "-Xmx3072M"]
