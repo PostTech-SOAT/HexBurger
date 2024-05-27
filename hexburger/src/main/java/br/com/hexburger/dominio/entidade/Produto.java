@@ -9,13 +9,13 @@ public class Produto {
 
     private final String id;
 
-    private String nome;
+    private final String nome;
 
-    private String descricao;
+    private final String descricao;
 
-    private BigDecimal valor;
+    private final BigDecimal valor;
 
-    private Categoria categoria;
+    private final Categoria categoria;
 
     public Produto(String id, String nome, String descricao, BigDecimal valor, Categoria categoria) {
         this.id = id;
@@ -33,11 +33,6 @@ public class Produto {
         this.valor = valor;
         this.categoria = categoria;
         validaProduto();
-    }
-
-    public Produto(String id) {
-        this.id = id;
-        this.valor = BigDecimal.ZERO;
     }
 
     public String getId() {
