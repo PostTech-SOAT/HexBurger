@@ -12,11 +12,9 @@ Link para o Miro: https://miro.com/app/board/uXjVKYystBE=/
 
 Instruções para executar o projeto:
 - Clonar o projeto
-- A partir do diretório raiz do projeto, compilar a aplicação para que o arquivo .jar seja gerado:
-  - ``` mvn clean install -DskipTests ```
-- A partir do diretório raiz do projeto, executar o build do docker compose
+- A partir do diretório raíz do projeto, executar o build do docker compose
   - ``` docker compose build ```
 - Após a imagem devidamente criada, subir a aplicação via docker compose
   - ``` docker compose up ```
- 
+
 O projeto iniciará na porta 8080 e a documentação das APIs pode ser consultada através do link http://localhost:8080/swagger-ui/index.html.
