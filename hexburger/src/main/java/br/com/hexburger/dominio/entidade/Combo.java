@@ -11,28 +11,27 @@ public class Combo {
 
     private final String id;
 
-    private final List<Produto> produtos;
+    private final List<ProdutoPedido> produtos;
 
     private final BigDecimal valorTotal;
 
-    public Combo(String id, List<Produto> produtos, BigDecimal valorTotal) {
+    public Combo(String id, List<ProdutoPedido> produtos, BigDecimal valorTotal) {
         this.id = id;
         this.produtos = produtos;
         this.valorTotal = valorTotal;
     }
 
-    public Combo(List<Produto> produtos) {
+    public Combo(List<ProdutoPedido> produtos) {
         this.id = UUID.randomUUID().toString();
         this.produtos = produtos;
-        this.valorTotal = produtos.stream().map(Produto::getValor).reduce(BigDecimal.ZERO, BigDecimal::add);
-        validaCombo();
+        this.valorTotal = produtos.stream().map(ProdutoPedido::getValor).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public String getId() {
         return id;
     }
 
-    public List<Produto> getProdutos() {
+    public List<ProdutoPedido> getProdutos() {
         return produtos;
     }
 
@@ -40,14 +39,14 @@ public class Combo {
         return valorTotal;
     }
 
-    private void validaCombo() {
+    public void validaCombo() {
         if (!validaProdutos() || !validaValorTotal()) {
             throw new IllegalArgumentException("Combo inválido");
         }
     }
 
     private boolean validaProdutos() {
-        List<Categoria> categorias = produtos.stream().map(Produto::getCategoria).toList();
+        List<Categoria> categorias = produtos.stream().map(ProdutoPedido::getCategoria).toList();
         return !isEmpty(produtos) && categorias.stream().noneMatch(categoria -> frequency(categorias, categoria) > 1);
     }
 

@@ -48,8 +48,8 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public CriarPedidoUseCase criarPedidoUseCase(PedidoPortaInfraestrutura pedidoPortaInfraestrutura) {
-        return new CriarPedidoUseCase(pedidoPortaInfraestrutura);
+    public CriarPedidoUseCase criarPedidoUseCase(PedidoPortaInfraestrutura pedidoPortaInfraestrutura, ProdutoPortaInfraestrutura produtoPortaInfraestrutura) {
+        return new CriarPedidoUseCase(pedidoPortaInfraestrutura, produtoPortaInfraestrutura);
     }
 
     @Bean

@@ -26,16 +26,16 @@ public class EProduto {
 
     private String descricao;
 
-    private String valor;
+    private BigDecimal valor;
 
     @Enumerated(STRING)
     private Categoria categoria;
 
     public static EProduto toEntity(Produto produto) {
-        return new EProduto(produto.getId(), produto.getNome(), produto.getDescricao(), produto.getValor().toString(), produto.getCategoria());
+        return new EProduto(produto.getId(), produto.getNome(), produto.getDescricao(), produto.getValor(), produto.getCategoria());
     }
 
     public Produto toDomain() {
-        return new Produto(this.getId(), this.getNome(), this.getDescricao(), new BigDecimal(this.getValor()), this.getCategoria());
+        return new Produto(this.getId(), this.getNome(), this.getDescricao(), this.getValor(), this.getCategoria());
     }
 }

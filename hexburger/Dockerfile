@@ -11,8 +11,11 @@ RUN chown -R hexuser:hexgroup $APP_HOME
 
 RUN chmod -R 755 $APP_HOME
 
+#Copiando o jar da aplicação
 COPY ./target/hexburger-0.0.1-SNAPSHOT.jar hexburger.jar
 
+#Expondo a porta 8080
 EXPOSE 8080
 
+#Executando a aplicação
 ENTRYPOINT ["java", "-jar",  "hexburger.jar", "-Xms2048M", "-Xmx3072M"]

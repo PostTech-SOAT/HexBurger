@@ -4,6 +4,8 @@ import br.com.hexburger.adaptador.condutor.aplicacao.dto.ClienteDTO;
 import br.com.hexburger.dominio.porta.entrada.ClientePortaAplicacao;
 import br.com.hexburger.dominio.util.exception.ConflictException;
 import br.com.hexburger.dominio.util.exception.ResourceNotFoundException;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,7 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.CONFLICT;
 
 @RestController
+@Tag(name = "Cliente")
 @RequiredArgsConstructor
 @RequestMapping(value = "/v1/cliente")
 public class ClienteController {
@@ -20,6 +23,7 @@ public class ClienteController {
     private final ClientePortaAplicacao clientePortaAplicacao;
 
     @PostMapping
+    @Operation(summary = "Criar um cliente")
     public ResponseEntity<Object> criarCliente(@RequestBody ClienteDTO clienteDTO) {
         try {
             return ResponseEntity.ok(toDTO(clientePortaAplicacao.criarCliente(clienteDTO.toDomain())));
@@ -31,6 +35,7 @@ public class ClienteController {
     }
 
     @GetMapping("/{cpf}")
+    @Operation(summary = "Buscar um cliente por CPF")
     public ResponseEntity<ClienteDTO> buscarCliente(@PathVariable String cpf) {
         try {
             return ResponseEntity.ok(toDTO(clientePortaAplicacao.buscarCliente(cpf)));

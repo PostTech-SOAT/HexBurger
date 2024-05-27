@@ -1,10 +1,7 @@
 package br.com.hexburger.adaptador.conduzido.infraestrutura.entidade;
 
 import br.com.hexburger.dominio.entidade.Combo;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,17 +19,17 @@ public class ECombo {
     @Id
     private String id;
 
-    @ManyToMany
-    private List<EProduto> produtos;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<EProdutoPedido> produtosPedido;
 
     private BigDecimal valorTotal;
 
     public static ECombo toEntity(Combo combo) {
-        return new ECombo(combo.getId(), combo.getProdutos().stream().map(EProduto::toEntity).toList(), combo.getValorTotal());
+        return new ECombo(combo.getId(), combo.getProdutos().stream().map(EProdutoPedido::toEntity).toList(), combo.getValorTotal());
     }
 
     public Combo toDomain() {
-        return new Combo(this.getId(), this.getProdutos().stream().map(EProduto::toDomain).toList(), this.getValorTotal());
+        return new Combo(this.getId(), this.getProdutosPedido().stream().map(EProdutoPedido::toDomain).toList(), this.getValorTotal());
     }
 
 }
