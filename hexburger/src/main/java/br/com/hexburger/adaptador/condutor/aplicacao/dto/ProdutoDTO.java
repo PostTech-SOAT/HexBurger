@@ -8,12 +8,14 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
+import static io.swagger.v3.oas.annotations.media.Schema.AccessMode.READ_ONLY;
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
 @Data
 @AllArgsConstructor
 public class ProdutoDTO {
 
+    @Schema(accessMode = READ_ONLY)
     private String id;
 
     @Schema(example = "Hex Burger", requiredMode = REQUIRED)

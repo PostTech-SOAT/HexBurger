@@ -17,7 +17,7 @@ public class ComboDTO {
     @Schema(accessMode = READ_ONLY)
     private final String id;
 
-    private final List<ProdutoDTO> produtos;
+    private final List<ProdutoPedidoDTO> produtos;
 
     @Schema(accessMode = READ_ONLY)
     private final BigDecimal valorTotal;
@@ -27,6 +27,6 @@ public class ComboDTO {
     }
 
     public static ComboDTO toDTO(Combo combo) {
-        return new ComboDTO(combo.getId(), combo.getProdutos().stream().map(ProdutoDTO::toDTO).toList(), combo.getValorTotal());
+        return new ComboDTO(combo.getId(), combo.getProdutos().stream().map(ProdutoPedidoDTO::toDTO).toList(), combo.getValorTotal());
     }
 }

@@ -13,9 +13,9 @@ public class Pedido {
 
     private final String id;
 
-    private final List<Combo> combos;
+    private List<Combo> combos;
 
-    private final BigDecimal valorTotal;
+    private BigDecimal valorTotal;
 
     private final Cliente cliente;
 
@@ -30,7 +30,6 @@ public class Pedido {
         this.cliente = cliente;
         this.status = RECEBIDO;
         this.dataPedido = now();
-        validaPedido();
     }
 
     public Pedido(String id, List<Combo> combos, BigDecimal valorTotal, Cliente cliente, StatusPedido status, LocalDateTime dataPedido) {
@@ -44,6 +43,11 @@ public class Pedido {
 
     public String getId() {
         return id;
+    }
+
+    public void setCombos(List<Combo> combos) {
+        this.combos = combos;
+        this.valorTotal = combos.stream().map(Combo::getValorTotal).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public List<Combo> getCombos() {
@@ -66,10 +70,11 @@ public class Pedido {
         return dataPedido;
     }
 
-    private void validaPedido() {
+    public void validaPedido() {
         if (!validaCombos() || !validaValorTotal()) {
             throw new IllegalArgumentException("Pedido inválido");
         }
+        combos.forEach(Combo::validaCombo);
     }
 
     private boolean validaCombos() {
