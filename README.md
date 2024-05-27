@@ -16,3 +16,5 @@ Instruções para executar o projeto:
   - ``` docker compose build ```
 - Após a imagem devidamente criada, subir a aplicação via docker compose
   - ``` docker compose up ```
+
+O projeto iniciará na porta 8080 e a documentação das APIs pode ser consultada através do link http://localhost:8080/swagger-ui/index.html.
