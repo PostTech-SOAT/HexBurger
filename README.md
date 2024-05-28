@@ -8,8 +8,8 @@ Integrantes:
 - Willian Novais Planciunas - RM354475
 
 <h3>HexBurger:</h3>
-O projeto a seguir é uma API para a hamburgueria HexBurger, que possui como especialidade a confecção de hambúrgueres no formato hexagonal.
-Ela foi escrita utilizando Java na versão 21 e Spring Boot com um banco de dados Postgres.
+O projeto a seguir é um sistema para a hamburgueria HexBurger, que possui como especialidade a confecção de hambúrgueres no formato hexagonal. 
+O objetivo do projeto é otimizar os processos de cada filial da rede. A primeira entrega consiste na gestão de clientes, produtos e pedidos.
 A seguir, temos uma documentação em Event Storming da solução e um passo a passo para executar a aplicação:
 
 <h3>Tech Challenge primeira entrega:</h3>
