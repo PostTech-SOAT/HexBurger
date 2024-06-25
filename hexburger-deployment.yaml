@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hexburger-deployment
+  labels:
+    name: hexburger-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hexburger
+  template:
+    metadata:
+      labels:
+        app: hexburger
+    spec:
+      containers:
+        - name: hexburger
+          image: guirodriguero/hexburger:latest
+          ports:
+            - containerPort: 8080
