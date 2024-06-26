@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hexburger-service
+  labels:
+    name: hexburger-service
+spec:
+  selector:
+    app: hexburger
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer
