@@ -19,3 +19,13 @@ spec:
           image: guirodriguero/hexburger:latest
           ports:
             - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /v1/produto/LANCHE
+              port: 8080
+            initialDelaySeconds: 30
+            failureThreshold: 3
+            periodSeconds: 15
+          resources:
+            requests:
+              cpu: "700m"
