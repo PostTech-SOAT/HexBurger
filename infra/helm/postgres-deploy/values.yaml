@@ -139,6 +139,7 @@ env:
         key: POSTGRES_DB
 
 configMap:
+  enabled: true
   name: postgres-cm
   data:
     POSTGRES_USER: postgres
