@@ -37,7 +37,7 @@ O projeto iniciará na porta 8080 e a documentação das APIs pode ser consultad
 
 Arquitetura de infraestrutura do projeto:
 
-![arquitetura-infra-hexburguer.drawio-2.svg](Hexburguer%20225a7800ebc647c2a7d2e9a6cd0c1ec9/arquitetura-infra-hexburguer.drawio-2.svg)
+![arquitetura-infra-hexburguer.drawio-2.svg](./public/arquitetura-infra-hexburguer.drawio-2.svg)
 
 ### Infraestrutura
 
