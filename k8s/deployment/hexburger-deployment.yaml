@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hexburger-deployment
+  labels:
+    name: hexburger-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hexburger
+  template:
+    metadata:
+      labels:
+        app: hexburger
+    spec:
+      containers:
+        - name: hexburger
+          image: guirodriguero/hexburger:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /v1/produto/LANCHE
+              port: 8080
+            initialDelaySeconds: 30
+            failureThreshold: 3
+            periodSeconds: 90
+          resources:
+            requests:
+              cpu: "700m"
