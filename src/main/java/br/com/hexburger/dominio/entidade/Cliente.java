@@ -1,7 +1,5 @@
 package br.com.hexburger.dominio.entidade;
 
-import static org.springframework.util.ObjectUtils.isEmpty;
-
 public class Cliente {
 
     private final String cpf;
@@ -36,15 +34,15 @@ public class Cliente {
     }
 
     private boolean validaCpf() {
-        return !isEmpty(cpf) && cpf.length() == 11;
+        return cpf != null && cpf.length() == 11;
     }
 
     private boolean validaNome() {
-        return !isEmpty(nome);
+        return nome != null && !nome.isEmpty();
     }
 
     private boolean validaEmail() {
-        return !isEmpty(email);
+        return email != null && email.contains("@") && email.contains(".");
     }
 
 }
