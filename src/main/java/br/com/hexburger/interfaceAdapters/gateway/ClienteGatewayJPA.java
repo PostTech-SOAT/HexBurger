@@ -17,12 +17,13 @@ public class ClienteGatewayJPA implements ClienteGateway {
 
     @Override
     public Cliente criarCliente(Cliente cliente) {
-        return repository.criarCliente(EClienteInterface.toEntity(cliente)).toDomain();
+        EClienteInterface eClienteInterface = repository.criarCliente(cliente.getCpf(), cliente.getNome(), cliente.getEmail());
+        return new Cliente(eClienteInterface.getCpf(), eClienteInterface.getNome(), eClienteInterface.getEmail());
     }
 
     @Override
     public Optional<Cliente> buscarCliente(String cpf) {
-        return repository.buscarCliente(cpf).map(EClienteInterface::toDomain);
+        return repository.buscarCliente(cpf).map(eClienteInterface -> new Cliente(eClienteInterface.getCpf(), eClienteInterface.getNome(), eClienteInterface.getEmail()));
     }
 
 }

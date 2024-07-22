@@ -1,6 +1,5 @@
 package br.com.hexburger.framework.entidade;
 
-import br.com.hexburger.dominio.entidade.Cliente;
 import br.com.hexburger.interfaceAdapters.entidadeAdaptador.EClienteInterface;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -24,13 +23,5 @@ public class ECliente implements Serializable, EClienteInterface {
     private String nome;
 
     private String email;
-
-    public static ECliente toEntity(Cliente cliente) {
-        return new ECliente(cliente.getCpf(), cliente.getNome(), cliente.getEmail());
-    }
-
-    public Cliente toDomain() {
-        return new Cliente(this.getCpf(), this.getNome(), this.getEmail());
-    }
 
 }

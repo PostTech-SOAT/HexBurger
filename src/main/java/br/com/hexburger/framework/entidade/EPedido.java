@@ -35,12 +35,12 @@ public class EPedido {
 
     public static EPedido toEntity(Pedido combo) {
         return new EPedido(combo.getId(), combo.getCombos().stream().map(ECombo::toEntity).toList(),
-                combo.getValorTotal(), combo.getCliente() != null ? ECliente.toEntity(combo.getCliente()) : null, combo.getStatus(), combo.getDataPedido());
+                combo.getValorTotal(), combo.getCliente() != null ? new ECliente(combo.getCliente().getCpf(), combo.getCliente().getNome(), combo.getCliente().getEmail()) : null, combo.getStatus(), combo.getDataPedido());
     }
 
-    public Pedido toDomain() {
+    public Pedido toDomain() { //todo -> Remover
         return new Pedido(this.getId(), this.getCombos().stream().map(ECombo::toDomain).toList(), this.getValorTotal(),
-                this.getCliente() != null ? this.getCliente().toDomain() : null, this.getStatus(), this.getDataPedido());
+                null, this.getStatus(), this.getDataPedido());
     }
 
 }
