@@ -1,7 +1,5 @@
 package br.com.hexburger.interfaceAdapters.dto;
 
-import br.com.hexburger.dominio.entidade.Cliente;
-import br.com.hexburger.framework.entidade.ECliente;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
@@ -27,35 +25,12 @@ public class ClienteDTO {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
     public String getNome() {
         return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Cliente toDomain() {
-        return new Cliente(cpf, nome, email);
-    }
-
-    public static ECliente toEntity(Cliente cliente) {
-        return new ECliente(cliente.getCpf(), cliente.getNome(), cliente.getEmail());
-    }
-
-    public static ClienteDTO toDTO(Cliente cliente) {
-        return new ClienteDTO(cliente.getCpf(), cliente.getNome(), cliente.getEmail());
-    }
 }

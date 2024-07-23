@@ -6,37 +6,34 @@ import br.com.hexburger.application.useCase.produto.EditarProdutoUseCase;
 import br.com.hexburger.application.useCase.produto.RemoverProdutoUseCase;
 import br.com.hexburger.dominio.entidade.Categoria;
 import br.com.hexburger.dominio.entidade.Produto;
+import br.com.hexburger.interfaceAdapters.dto.ProdutoDTO;
+import br.com.hexburger.interfaceAdapters.gateway.ProdutoGatewayJPA;
+import br.com.hexburger.interfaceAdapters.presenter.ProdutoPresenter;
+import br.com.hexburger.interfaceAdapters.repositorioAdaptador.ProdutoRepositorioAdaptador;
 
 import java.util.List;
 
 public class ProdutoController {
 
-    private final CriarProdutoUseCase criarProdutoUseCase;
-    private final BuscarProdutosPorCategoriaUseCase buscarProdutosPorCategoriaUseCase;
-    private final EditarProdutoUseCase editarProdutoUseCase;
-    private final RemoverProdutoUseCase removerProdutoUseCase;
-
-    public ProdutoController(CriarProdutoUseCase criarProdutoUseCase, BuscarProdutosPorCategoriaUseCase buscarProdutosPorCategoriaUseCase,
-                             EditarProdutoUseCase editarProdutoUseCase, RemoverProdutoUseCase removerProdutoUseCase) {
-        this.criarProdutoUseCase = criarProdutoUseCase;
-        this.buscarProdutosPorCategoriaUseCase = buscarProdutosPorCategoriaUseCase;
-        this.editarProdutoUseCase = editarProdutoUseCase;
-        this.removerProdutoUseCase = removerProdutoUseCase;
+    public ProdutoDTO criarProduto(ProdutoDTO produtoDTO, ProdutoRepositorioAdaptador repositorio) {
+        CriarProdutoUseCase useCase = new CriarProdutoUseCase(new ProdutoGatewayJPA(repositorio));
+        return ProdutoPresenter.toDTO(useCase.criarProduto(new Produto(produtoDTO.getNome(),
+                produtoDTO.getDescricao(), produtoDTO.getValor(), produtoDTO.getCategoria())));
     }
 
-    public Produto criarProduto(Produto produto) {
-        return criarProdutoUseCase.criarProduto(produto);
+    public ProdutoDTO editarProduto(String id, ProdutoDTO produtoDTO, ProdutoRepositorioAdaptador repositorio) {
+        EditarProdutoUseCase useCase = new EditarProdutoUseCase(new ProdutoGatewayJPA(repositorio));
+        return ProdutoPresenter.toDTO(useCase.editarProduto(new Produto(id, produtoDTO.getNome(),
+                produtoDTO.getDescricao(), produtoDTO.getValor(), produtoDTO.getCategoria())));
     }
 
-    public List<Produto> buscarProdutosPorCategoria(Categoria categoria) {
-        return buscarProdutosPorCategoriaUseCase.buscarProdutosPorCategoria(categoria);
+    public void removerProduto(String id, ProdutoRepositorioAdaptador repositorio) {
+        RemoverProdutoUseCase useCase = new RemoverProdutoUseCase(new ProdutoGatewayJPA(repositorio));
+        useCase.removerProduto(id);
     }
 
-    public Produto editarProduto(Produto produto) {
-        return editarProdutoUseCase.editarProduto(produto);
-    }
-
-    public void removerProduto(String id) {
-        removerProdutoUseCase.removerProduto(id);
+    public List<ProdutoDTO> buscarProdutosPorCategoria(Categoria categoria, ProdutoRepositorioAdaptador repositorio) {
+        BuscarProdutosPorCategoriaUseCase useCase = new BuscarProdutosPorCategoriaUseCase(new ProdutoGatewayJPA(repositorio));
+        return ProdutoPresenter.toDTO(useCase.buscarProdutosPorCategoria(categoria));
     }
 }

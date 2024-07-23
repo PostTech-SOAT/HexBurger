@@ -6,6 +6,6 @@ import br.com.hexburger.interfaceAdapters.dto.ClienteDTO;
 public class ClientePresenter {
 
     public static ClienteDTO toDTO(Cliente cliente) {
-        return ClienteDTO.toDTO(cliente); //Precisa implementar o método ou podemos só chamar?
+        return new ClienteDTO(cliente.getCpf(), cliente.getNome(), cliente.getEmail());
     }
 }

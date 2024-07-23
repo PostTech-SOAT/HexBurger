@@ -1,7 +1,7 @@
 package br.com.hexburger.framework.api;
 
-import br.com.hexburger.interfaceAdapters.dto.PedidoDTO;
 import br.com.hexburger.interfaceAdapters.controller.PedidoController;
+import br.com.hexburger.interfaceAdapters.dto.PedidoDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -35,5 +35,4 @@ public class PedidoAPI {
         return ResponseEntity.ok(controller.buscarPedidos().stream().map(PedidoDTO::toDTO).toList());
     }
 
-    //checkout -> Para chamar API do mercado pago, chamar nessa camada?
 }

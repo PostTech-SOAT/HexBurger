@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import static io.swagger.v3.oas.annotations.media.Schema.AccessMode.READ_ONLY;
-
+// todo remover lombok
 @Data
 @AllArgsConstructor
 public class PedidoDTO {
@@ -33,11 +33,17 @@ public class PedidoDTO {
     private final LocalDateTime dataPedido;
 
     public Pedido toDomain() {
-        return new Pedido(combos.stream().map(ComboDTO::toDomain).toList(), cliente != null ? cliente.toDomain() : null);
+        return new Pedido(combos.stream().map(ComboDTO::toDomain).toList(), cliente != null ?
+//                cliente.toDomain()
+                null
+                : null);
     }
 
     public static PedidoDTO toDTO(Pedido pedido) {
         return new PedidoDTO(pedido.getId(), pedido.getCombos().stream().map(ComboDTO::toDTO).toList(), pedido.getValorTotal(),
-                pedido.getCliente() != null ? ClienteDTO.toDTO(pedido.getCliente()) : null, pedido.getStatus(), pedido.getDataPedido());
+                pedido.getCliente() != null ?
+//                        ClienteDTO.toDTO(pedido.getCliente())
+                null
+                        : null, pedido.getStatus(), pedido.getDataPedido());
     }
 }

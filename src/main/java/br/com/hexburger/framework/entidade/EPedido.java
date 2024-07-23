@@ -2,6 +2,7 @@ package br.com.hexburger.framework.entidade;
 
 import br.com.hexburger.dominio.entidade.Pedido;
 import br.com.hexburger.dominio.entidade.StatusPedido;
+import br.com.hexburger.interfaceAdapters.entidadeAdaptador.EPedidoInterface;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "Pedido")
-public class EPedido {
+public class EPedido implements EPedidoInterface {
 
     @Id
     private String id;

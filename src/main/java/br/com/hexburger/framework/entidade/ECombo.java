@@ -1,6 +1,7 @@
 package br.com.hexburger.framework.entidade;
 
 import br.com.hexburger.dominio.entidade.Combo;
+import br.com.hexburger.interfaceAdapters.entidadeAdaptador.EComboInterface;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "Combo")
-public class ECombo {
+public class ECombo implements EComboInterface {
 
     @Id
     private String id;
