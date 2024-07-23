@@ -71,23 +71,24 @@ resources:
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
     cpu: 700m
-    memory: 512Mi
+    memory: 1024Mi
   requests:
     cpu: 400m
-    memory: 256Mi
+    memory: 512Mi
 
 livenessProbe:
   httpGet:
     path: /v1/produto/LANCHE
     port: 8080
-  initialDelaySeconds: 5
+  initialDelaySeconds: 120
   periodSeconds: 20
+  failureThreshould: 2
 
 readinessProbe:
   httpGet:
     path: /v1/produto/LANCHE
     port: 8080
-  initialDelaySeconds: 30
+  initialDelaySeconds: 180
   failureThreshold: 3
   periodSeconds: 90
 

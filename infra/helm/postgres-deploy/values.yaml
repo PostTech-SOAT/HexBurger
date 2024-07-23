@@ -15,7 +15,7 @@ image:
 
 imagePullSecrets: []
 nameOverride: ""
-fullnameOverride: ""
+fullnameOverride: "postgres-service"
 
 serviceAccount:
   create: true
