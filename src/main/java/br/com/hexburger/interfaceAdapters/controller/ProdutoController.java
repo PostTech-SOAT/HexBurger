@@ -4,7 +4,6 @@ import br.com.hexburger.application.useCase.produto.BuscarProdutosPorCategoriaUs
 import br.com.hexburger.application.useCase.produto.CriarProdutoUseCase;
 import br.com.hexburger.application.useCase.produto.EditarProdutoUseCase;
 import br.com.hexburger.application.useCase.produto.RemoverProdutoUseCase;
-import br.com.hexburger.dominio.entidade.Categoria;
 import br.com.hexburger.dominio.entidade.Produto;
 import br.com.hexburger.interfaceAdapters.dto.ProdutoDTO;
 import br.com.hexburger.interfaceAdapters.gateway.ProdutoGatewayJPA;
@@ -12,6 +11,8 @@ import br.com.hexburger.interfaceAdapters.presenter.ProdutoPresenter;
 import br.com.hexburger.interfaceAdapters.repositorioAdaptador.ProdutoRepositorioAdaptador;
 
 import java.util.List;
+
+import static br.com.hexburger.dominio.entidade.Categoria.valueOf;
 
 public class ProdutoController {
 
@@ -32,8 +33,8 @@ public class ProdutoController {
         useCase.removerProduto(id);
     }
 
-    public List<ProdutoDTO> buscarProdutosPorCategoria(Categoria categoria, ProdutoRepositorioAdaptador repositorio) {
+    public List<ProdutoDTO> buscarProdutosPorCategoria(String categoria, ProdutoRepositorioAdaptador repositorio) {
         BuscarProdutosPorCategoriaUseCase useCase = new BuscarProdutosPorCategoriaUseCase(new ProdutoGatewayJPA(repositorio));
-        return ProdutoPresenter.toDTO(useCase.buscarProdutosPorCategoria(categoria));
+        return ProdutoPresenter.toDTO(useCase.buscarProdutosPorCategoria(valueOf(categoria)));
     }
 }

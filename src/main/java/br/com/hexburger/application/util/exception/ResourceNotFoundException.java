@@ -1,4 +1,4 @@
-package br.com.hexburger.interfaceAdapters.util.exception;
+package br.com.hexburger.application.util.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
 

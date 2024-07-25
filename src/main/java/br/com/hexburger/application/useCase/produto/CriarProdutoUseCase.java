@@ -2,7 +2,7 @@ package br.com.hexburger.application.useCase.produto;
 
 import br.com.hexburger.application.gateway.ProdutoGateway;
 import br.com.hexburger.dominio.entidade.Produto;
-import br.com.hexburger.interfaceAdapters.util.exception.ConflictException;
+import br.com.hexburger.application.util.exception.ConflictException;
 
 public class CriarProdutoUseCase {
 

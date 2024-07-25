@@ -1,7 +1,7 @@
 package br.com.hexburger.framework.api;
 
-import br.com.hexburger.interfaceAdapters.util.exception.ConflictException;
-import br.com.hexburger.interfaceAdapters.util.exception.ResourceNotFoundException;
+import br.com.hexburger.application.util.exception.ConflictException;
+import br.com.hexburger.application.util.exception.ResourceNotFoundException;
 import br.com.hexburger.framework.repository.ClienteRepositorioImpl;
 import br.com.hexburger.interfaceAdapters.controller.ClienteController;
 import br.com.hexburger.interfaceAdapters.dto.ClienteDTO;

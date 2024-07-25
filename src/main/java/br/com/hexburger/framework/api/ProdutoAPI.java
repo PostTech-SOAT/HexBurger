@@ -1,8 +1,7 @@
 package br.com.hexburger.framework.api;
 
-import br.com.hexburger.dominio.entidade.Categoria;
-import br.com.hexburger.interfaceAdapters.util.exception.ConflictException;
-import br.com.hexburger.interfaceAdapters.util.exception.ResourceNotFoundException;
+import br.com.hexburger.application.util.exception.ConflictException;
+import br.com.hexburger.application.util.exception.ResourceNotFoundException;
 import br.com.hexburger.framework.repository.ProdutoRepositorioImpl;
 import br.com.hexburger.interfaceAdapters.controller.ProdutoController;
 import br.com.hexburger.interfaceAdapters.dto.ProdutoDTO;
@@ -71,11 +70,11 @@ public class ProdutoAPI {
     }
 
     @GetMapping("/{categoria}")
-    @Operation(summary = "Buscar produtos por categoria")
-    public ResponseEntity<Object> buscarProdutosPorCategoria(@PathVariable Categoria categoria) {
+    @Operation(summary = "Buscar produtos por categoria (LANCHE, BEBIDA, ACOMPANHAMENTO, SOBREMESA)")
+    public ResponseEntity<Object> buscarProdutosPorCategoria(@PathVariable String categoria) {
         try {
             ProdutoController controller = new ProdutoController();
-            return ResponseEntity.ok(controller.buscarProdutosPorCategoria(categoria, repositorio));
+            return ResponseEntity.ok(controller.buscarProdutosPorCategoria(categoria.toUpperCase(), repositorio));
         } catch (ResourceNotFoundException e) {
             return new ResponseEntity<>(e.getMessage(), NOT_FOUND);
         }

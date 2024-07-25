@@ -5,14 +5,13 @@ import br.com.hexburger.application.gateway.ProdutoGateway;
 import br.com.hexburger.application.useCase.produto.BuscarProdutoPorIdUseCase;
 import br.com.hexburger.dominio.entidade.Combo;
 import br.com.hexburger.dominio.entidade.Pedido;
-import br.com.hexburger.interfaceAdapters.gateway.ProdutoGatewayJPA;
 
 public class CriarPedidoUseCase {
 
     private final PedidoGateway pedidoGateway;
     private final ProdutoGateway produtoGateway;
 
-    public CriarPedidoUseCase(PedidoGateway pedidoGateway, ProdutoGatewayJPA produtoGateway) {
+    public CriarPedidoUseCase(PedidoGateway pedidoGateway, ProdutoGateway produtoGateway) {
         this.pedidoGateway = pedidoGateway;
         this.produtoGateway = produtoGateway;
     }
