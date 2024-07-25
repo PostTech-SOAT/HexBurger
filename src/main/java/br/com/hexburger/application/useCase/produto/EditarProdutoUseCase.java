@@ -1,8 +1,8 @@
 package br.com.hexburger.application.useCase.produto;
 
-import br.com.hexburger.dominio.entidade.Produto;
 import br.com.hexburger.application.gateway.ProdutoGateway;
-import br.com.hexburger.dominio.util.exception.ResourceNotFoundException;
+import br.com.hexburger.dominio.entidade.Produto;
+import br.com.hexburger.interfaceAdapters.util.exception.ResourceNotFoundException;
 
 public class EditarProdutoUseCase {
 

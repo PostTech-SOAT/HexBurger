@@ -1,9 +1,7 @@
 package br.com.hexburger.framework.entidade;
 
-import br.com.hexburger.dominio.entidade.Categoria;
-import br.com.hexburger.dominio.entidade.ProdutoPedido;
+import br.com.hexburger.interfaceAdapters.entidadeAdaptador.EProdutoPedidoInterface;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -12,14 +10,12 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
-import static jakarta.persistence.EnumType.STRING;
-
 @Getter
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "ProdutoPedido")
-public class EProdutoPedido {
+public class EProdutoPedido implements EProdutoPedidoInterface {
 
     @Id
     private String id;
@@ -30,15 +26,6 @@ public class EProdutoPedido {
 
     private BigDecimal valor;
 
-    @Enumerated(STRING)
-    private Categoria categoria;
-
-    public static EProdutoPedido toEntity(ProdutoPedido produtoPedido) {
-        return new EProdutoPedido(produtoPedido.getId(), produtoPedido.getNome(), produtoPedido.getDescricao(), produtoPedido.getValor(), produtoPedido.getCategoria());
-    }
-
-    public ProdutoPedido toDomain() {
-        return new ProdutoPedido(this.getId(), this.getNome(), this.getDescricao(), this.getValor(), this.getCategoria());
-    }
+    private String categoria;
 
 }

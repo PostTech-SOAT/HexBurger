@@ -1,12 +1,14 @@
 package br.com.hexburger.framework.api;
 
 import br.com.hexburger.dominio.entidade.Categoria;
-import br.com.hexburger.dominio.util.exception.ConflictException;
-import br.com.hexburger.dominio.util.exception.ResourceNotFoundException;
+import br.com.hexburger.interfaceAdapters.util.exception.ConflictException;
+import br.com.hexburger.interfaceAdapters.util.exception.ResourceNotFoundException;
 import br.com.hexburger.framework.repository.ProdutoRepositorioImpl;
 import br.com.hexburger.interfaceAdapters.controller.ProdutoController;
 import br.com.hexburger.interfaceAdapters.dto.ProdutoDTO;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +26,11 @@ public class ProdutoAPI {
 
     @PostMapping
     @Operation(summary = "Criar um produto")
-    public ResponseEntity<Object> criarProduto(@RequestBody ProdutoDTO produtoDTO) {
+    public ResponseEntity<Object> criarProduto(@RequestBody @io.swagger.v3.oas.annotations.parameters.RequestBody(
+            description = "Objeto de exemplo para criar Produto", required = true,
+            content = @Content(mediaType = "application/json", examples =
+            @ExampleObject(value = "{\"nome\": \"Hex Burger\", \"descricao\": \"Pão e Hambuguer no formato hexagonal\", \"valor\": 20, \"categoria\": \"LANCHE\"}")))
+                                               ProdutoDTO produtoDTO) {
         try {
             ProdutoController controller = new ProdutoController();
             return ResponseEntity.ok(controller.criarProduto(produtoDTO, repositorio));
@@ -37,7 +43,11 @@ public class ProdutoAPI {
 
     @PutMapping("/{id}")
     @Operation(summary = "Editar um produto")
-    public ResponseEntity<Object> editarProduto(@PathVariable String id, @RequestBody ProdutoDTO produtoDTO) {
+    public ResponseEntity<Object> editarProduto(@PathVariable String id, @RequestBody @io.swagger.v3.oas.annotations.parameters.RequestBody(
+            description = "Objeto de exemplo para editar Produto", required = true,
+            content = @Content(mediaType = "application/json", examples =
+            @ExampleObject(value = "{\"nome\": \"Hex Burger\", \"descricao\": \"Pão e Hambuguer no formato hexagonal\", \"valor\": 20, \"categoria\": \"LANCHE\"}")))
+    ProdutoDTO produtoDTO) {
         try {
             ProdutoController controller = new ProdutoController();
             return ResponseEntity.ok(controller.editarProduto(id, produtoDTO, repositorio));

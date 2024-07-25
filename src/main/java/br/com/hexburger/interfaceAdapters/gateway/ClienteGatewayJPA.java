@@ -2,8 +2,8 @@ package br.com.hexburger.interfaceAdapters.gateway;
 
 import br.com.hexburger.application.gateway.ClienteGateway;
 import br.com.hexburger.dominio.entidade.Cliente;
-import br.com.hexburger.interfaceAdapters.repositorioAdaptador.ClienteRepositorioAdaptador;
 import br.com.hexburger.interfaceAdapters.entidadeAdaptador.EClienteInterface;
+import br.com.hexburger.interfaceAdapters.repositorioAdaptador.ClienteRepositorioAdaptador;
 
 import java.util.Optional;
 

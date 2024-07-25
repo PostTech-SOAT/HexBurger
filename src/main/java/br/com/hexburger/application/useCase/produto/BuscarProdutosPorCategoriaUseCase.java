@@ -1,8 +1,8 @@
 package br.com.hexburger.application.useCase.produto;
 
+import br.com.hexburger.application.gateway.ProdutoGateway;
 import br.com.hexburger.dominio.entidade.Categoria;
 import br.com.hexburger.dominio.entidade.Produto;
-import br.com.hexburger.application.gateway.ProdutoGateway;
 
 import java.util.List;
 

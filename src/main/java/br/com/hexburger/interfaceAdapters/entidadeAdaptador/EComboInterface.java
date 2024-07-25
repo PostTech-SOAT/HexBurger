@@ -7,7 +7,7 @@ public interface EComboInterface {
 
     String getId();
 
-    List<EProdutoInterface> getProdutosPedido();
+    List<? extends EProdutoPedidoInterface> getProdutosPedido();
 
     BigDecimal getValorTotal();
 

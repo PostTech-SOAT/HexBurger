@@ -3,8 +3,6 @@ package br.com.hexburger.dominio.entidade;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-import static org.springframework.util.ObjectUtils.isEmpty;
-
 public class Produto {
 
     private final String id;
@@ -62,11 +60,11 @@ public class Produto {
     }
 
     private boolean validaNome() {
-        return !isEmpty(nome);
+        return nome != null && !nome.isEmpty();
     }
 
     private boolean validaDescricao() {
-        return !isEmpty(descricao);
+        return descricao != null && !descricao.isEmpty();
     }
 
     private boolean validaValor() {

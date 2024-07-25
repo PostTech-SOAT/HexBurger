@@ -1,7 +1,5 @@
 package br.com.hexburger.framework.entidade;
 
-import br.com.hexburger.dominio.entidade.Pedido;
-import br.com.hexburger.dominio.entidade.StatusPedido;
 import br.com.hexburger.interfaceAdapters.entidadeAdaptador.EPedidoInterface;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -30,18 +28,8 @@ public class EPedido implements EPedidoInterface {
     @ManyToOne
     private ECliente cliente;
 
-    private StatusPedido status;
+    private String status;
 
     private LocalDateTime dataPedido;
-
-    public static EPedido toEntity(Pedido combo) {
-        return new EPedido(combo.getId(), combo.getCombos().stream().map(ECombo::toEntity).toList(),
-                combo.getValorTotal(), combo.getCliente() != null ? new ECliente(combo.getCliente().getCpf(), combo.getCliente().getNome(), combo.getCliente().getEmail()) : null, combo.getStatus(), combo.getDataPedido());
-    }
-
-    public Pedido toDomain() { //todo -> Remover
-        return new Pedido(this.getId(), this.getCombos().stream().map(ECombo::toDomain).toList(), this.getValorTotal(),
-                null, this.getStatus(), this.getDataPedido());
-    }
 
 }

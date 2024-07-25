@@ -1,14 +1,14 @@
 package br.com.hexburger.interfaceAdapters.repositorioAdaptador;
 
-import br.com.hexburger.dominio.entidade.Pedido;
 import br.com.hexburger.interfaceAdapters.entidadeAdaptador.EPedidoInterface;
+import br.com.hexburger.interfaceAdapters.gateway.repositoryDTO.PedidoRepositoryDTO;
 
 import java.util.List;
 
 public interface PedidoRepositorioAdaptador {
 
-    EPedidoInterface criarPedido(Pedido pedido);
+    EPedidoInterface criarPedido(PedidoRepositoryDTO pedidoRepositoryDTO);
 
-    List<EPedidoInterface> buscarPedidos();
+    List<? extends EPedidoInterface> buscarPedidos();
 
 }

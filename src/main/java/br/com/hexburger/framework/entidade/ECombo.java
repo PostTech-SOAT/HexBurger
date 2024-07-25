@@ -1,6 +1,5 @@
 package br.com.hexburger.framework.entidade;
 
-import br.com.hexburger.dominio.entidade.Combo;
 import br.com.hexburger.interfaceAdapters.entidadeAdaptador.EComboInterface;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,13 +23,5 @@ public class ECombo implements EComboInterface {
     private List<EProdutoPedido> produtosPedido;
 
     private BigDecimal valorTotal;
-
-    public static ECombo toEntity(Combo combo) {
-        return new ECombo(combo.getId(), combo.getProdutos().stream().map(EProdutoPedido::toEntity).toList(), combo.getValorTotal());
-    }
-
-    public Combo toDomain() {
-        return new Combo(this.getId(), this.getProdutosPedido().stream().map(EProdutoPedido::toDomain).toList(), this.getValorTotal());
-    }
 
 }

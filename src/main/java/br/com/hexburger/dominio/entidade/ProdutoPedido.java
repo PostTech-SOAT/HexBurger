@@ -1,7 +1,6 @@
 package br.com.hexburger.dominio.entidade;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 public class ProdutoPedido {
 
@@ -48,7 +47,4 @@ public class ProdutoPedido {
         return categoria;
     }
 
-    public static ProdutoPedido ofProduto(Produto produto) {
-        return new ProdutoPedido(UUID.randomUUID().toString(), produto.getNome(), produto.getDescricao(), produto.getValor(), produto.getCategoria());
-    }
 }

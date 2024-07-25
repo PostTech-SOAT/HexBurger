@@ -1,28 +1,28 @@
 package br.com.hexburger.application.useCase.pedido;
 
 import br.com.hexburger.application.gateway.PedidoGateway;
+import br.com.hexburger.application.gateway.ProdutoGateway;
+import br.com.hexburger.application.useCase.produto.BuscarProdutoPorIdUseCase;
 import br.com.hexburger.dominio.entidade.Combo;
 import br.com.hexburger.dominio.entidade.Pedido;
+import br.com.hexburger.interfaceAdapters.gateway.ProdutoGatewayJPA;
 
 public class CriarPedidoUseCase {
 
     private final PedidoGateway pedidoGateway;
-//    private final ProdutoGateway produtoGateway;
+    private final ProdutoGateway produtoGateway;
 
-    public CriarPedidoUseCase(PedidoGateway pedidoGateway) {
+    public CriarPedidoUseCase(PedidoGateway pedidoGateway, ProdutoGatewayJPA produtoGateway) {
         this.pedidoGateway = pedidoGateway;
-//        this.produtoGateway = produtoGateway;
+        this.produtoGateway = produtoGateway;
     }
 
     public Pedido criarPedido(Pedido pedido) {
         pedido.setCombos(pedido.getCombos().stream().map(combo -> new Combo(combo.getProdutos().stream()
-//                .map(this::buscaProduto)
-                .toList())).toList());
+                .map(produto -> new BuscarProdutoPorIdUseCase(produtoGateway).buscaProduto(produto)).toList()))
+                .toList());
         pedido.validaPedido();
         return pedidoGateway.criarPedido(pedido);
     }
 
-//    private ProdutoPedido buscaProduto(ProdutoPedido produtoPedido) {
-//        return ofProduto(produtoGateway.buscarProdutoPorId(produtoPedido.getId()).orElseThrow(() -> new ResourceNotFoundException("Produto não existente")));
-//    }
 }
