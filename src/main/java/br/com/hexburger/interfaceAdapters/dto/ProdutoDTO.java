@@ -1,25 +1,23 @@
-package br.com.hexburger.dominio.entidade;
+package br.com.hexburger.interfaceAdapters.dto;
+
+import br.com.hexburger.dominio.entidade.Categoria;
 
 import java.math.BigDecimal;
 
-public class ProdutoPedido {
+public class ProdutoDTO {
 
-    private final String id;
+    private String id;
 
-    private String nome;
+    private final String nome;
 
-    private String descricao;
+    private final String descricao;
 
     private final BigDecimal valor;
 
-    private Categoria categoria;
+    private final Categoria categoria;
 
-    public ProdutoPedido(String id) {
-        this.id = id;
-        this.valor = BigDecimal.ZERO;
-    }
 
-    public ProdutoPedido(String id, String nome, String descricao, BigDecimal valor, Categoria categoria) {
+    public ProdutoDTO(String id, String nome, String descricao, BigDecimal valor, Categoria categoria) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -29,6 +27,10 @@ public class ProdutoPedido {
 
     public String getId() {
         return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNome() {

@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.UUID;
 
 import static java.util.Collections.frequency;
-import static org.springframework.util.CollectionUtils.isEmpty;
 
 public class Combo {
 
@@ -47,7 +46,7 @@ public class Combo {
 
     private boolean validaProdutos() {
         List<Categoria> categorias = produtos.stream().map(ProdutoPedido::getCategoria).toList();
-        return !isEmpty(produtos) && categorias.stream().noneMatch(categoria -> frequency(categorias, categoria) > 1);
+        return !produtos.isEmpty() && categorias.stream().noneMatch(categoria -> frequency(categorias, categoria) > 1);
     }
 
     private boolean validaValorTotal() {

@@ -7,7 +7,6 @@ import java.util.UUID;
 
 import static br.com.hexburger.dominio.entidade.StatusPedido.RECEBIDO;
 import static java.time.LocalDateTime.now;
-import static org.springframework.util.CollectionUtils.isEmpty;
 
 public class Pedido {
 
@@ -78,10 +77,11 @@ public class Pedido {
     }
 
     private boolean validaCombos() {
-        return !isEmpty(combos);
+        return combos != null && !combos.isEmpty();
     }
 
     private boolean validaValorTotal() {
         return valorTotal != null && valorTotal.compareTo(BigDecimal.ZERO) > 0;
     }
+
 }
