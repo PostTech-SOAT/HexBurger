@@ -11,7 +11,7 @@ import java.util.List;
 public class PedidoPresenter {
 
     public static PedidoDTO toDTO(Pedido pedido) {
-        return new PedidoDTO(pedido.getId(), getCombosDTO(pedido), pedido.getValorTotal(), getClienteDTO(pedido), pedido.getStatus(), pedido.getDataPedido());
+        return new PedidoDTO(pedido.getId(), pedido.getCodigo(), getCombosDTO(pedido), pedido.getValorTotal(), getClienteDTO(pedido), pedido.getStatus(), pedido.getDataPedido());
     }
 
     private static ClienteDTO getClienteDTO(Pedido pedido) {

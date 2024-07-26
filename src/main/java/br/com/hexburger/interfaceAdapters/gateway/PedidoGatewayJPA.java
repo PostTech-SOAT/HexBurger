@@ -34,7 +34,7 @@ public class PedidoGatewayJPA implements PedidoGateway {
                 new ProdutoPedidoRepositoryDTO(p.getId(), p.getNome(), p.getDescricao(), p.getValor(), p.getCategoria())).toList(),
                 combo.getValorTotal())).toList();
         ClienteRepositoryDTO clienteDTO = new ClienteRepositoryDTO(pedido.getCliente().getCpf(), pedido.getCliente().getNome(), pedido.getCliente().getEmail());
-        return new PedidoRepositoryDTO(pedido.getId(), combosDTO, pedido.getValorTotal(), clienteDTO, pedido.getStatus(), pedido.getDataPedido());
+        return new PedidoRepositoryDTO(pedido.getId(), pedido.getCodigo(), combosDTO, pedido.getValorTotal(), clienteDTO, pedido.getStatus(), pedido.getDataPedido());
     }
 
     private Pedido entityToDomain(EPedidoInterface ePedidoInterface) {
@@ -42,7 +42,7 @@ public class PedidoGatewayJPA implements PedidoGateway {
         List<Combo> combos = ePedidoInterface.getCombos().stream().map(combo -> new Combo(combo.getId(), combo.getProdutosPedido().stream().map(p ->
                 new ProdutoPedido(p.getId(), p.getNome(), p.getDescricao(), p.getValor(), Categoria.valueOf(p.getCategoria()))).toList(),
                 combo.getValorTotal())).toList();
-        return new Pedido(ePedidoInterface.getId(), combos, ePedidoInterface.getValorTotal(), cliente, StatusPedido.RECEBIDO, ePedidoInterface.getDataPedido());
+        return new Pedido(ePedidoInterface.getId(), ePedidoInterface.getCodigo(), combos, ePedidoInterface.getValorTotal(), cliente, StatusPedido.RECEBIDO, ePedidoInterface.getDataPedido());
     }
 
 }

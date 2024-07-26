@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+import org.hibernate.generator.EventType;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -19,6 +22,10 @@ public class EPedido implements EPedidoInterface {
 
     @Id
     private String id;
+
+    @Generated
+    @Column(columnDefinition = "serial", updatable = false)
+    private Integer codigo;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<ECombo> combos;

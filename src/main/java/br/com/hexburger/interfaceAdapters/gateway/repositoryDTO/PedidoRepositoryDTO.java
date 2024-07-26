@@ -10,6 +10,8 @@ public class PedidoRepositoryDTO {
 
     private String id;
 
+    private Integer codigo;
+
     private List<ComboRepositoryDTO> combos;
 
     private BigDecimal valorTotal;
@@ -20,8 +22,9 @@ public class PedidoRepositoryDTO {
 
     private LocalDateTime dataPedido;
 
-    public PedidoRepositoryDTO(String id, List<ComboRepositoryDTO> combos, BigDecimal valorTotal, ClienteRepositoryDTO cliente, StatusPedido status, LocalDateTime dataPedido) {
+    public PedidoRepositoryDTO(String id, Integer codigo, List<ComboRepositoryDTO> combos, BigDecimal valorTotal, ClienteRepositoryDTO cliente, StatusPedido status, LocalDateTime dataPedido) {
         this.id = id;
+        this.codigo = codigo;
         this.combos = combos;
         this.valorTotal = valorTotal;
         this.cliente = cliente;
@@ -35,6 +38,14 @@ public class PedidoRepositoryDTO {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public Integer getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
     }
 
     public List<ComboRepositoryDTO> getCombos() {

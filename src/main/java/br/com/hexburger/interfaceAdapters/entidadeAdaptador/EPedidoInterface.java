@@ -8,6 +8,8 @@ public interface EPedidoInterface {
 
     String getId();
 
+    Integer getCodigo();
+
     List<? extends EComboInterface> getCombos();
 
     BigDecimal getValorTotal();
