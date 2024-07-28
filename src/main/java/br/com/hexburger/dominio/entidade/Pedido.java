@@ -12,6 +12,8 @@ public class Pedido {
 
     private final String id;
 
+    private Integer codigo;
+
     private List<Combo> combos;
 
     private BigDecimal valorTotal;
@@ -31,8 +33,9 @@ public class Pedido {
         this.dataPedido = now();
     }
 
-    public Pedido(String id, List<Combo> combos, BigDecimal valorTotal, Cliente cliente, StatusPedido status, LocalDateTime dataPedido) {
+    public Pedido(String id, Integer codigo, List<Combo> combos, BigDecimal valorTotal, Cliente cliente, StatusPedido status, LocalDateTime dataPedido) {
         this.id = id;
+        this.codigo = codigo;
         this.combos = combos;
         this.valorTotal = valorTotal;
         this.cliente = cliente;
@@ -42,6 +45,10 @@ public class Pedido {
 
     public String getId() {
         return id;
+    }
+
+    public Integer getCodigo() {
+        return codigo;
     }
 
     public void setCombos(List<Combo> combos) {

@@ -10,6 +10,8 @@ public class PedidoDTO {
 
     private final String id;
 
+    private final Integer codigo;
+
     private final List<ComboDTO> combos;
 
     private final BigDecimal valorTotal;
@@ -20,8 +22,9 @@ public class PedidoDTO {
 
     private final LocalDateTime dataPedido;
 
-    public PedidoDTO(String id, List<ComboDTO> combos, BigDecimal valorTotal, ClienteDTO cliente, StatusPedido status, LocalDateTime dataPedido) {
+    public PedidoDTO(String id, Integer codigo, List<ComboDTO> combos, BigDecimal valorTotal, ClienteDTO cliente, StatusPedido status, LocalDateTime dataPedido) {
         this.id = id;
+        this.codigo = codigo;
         this.combos = combos;
         this.valorTotal = valorTotal;
         this.cliente = cliente;
@@ -31,6 +34,10 @@ public class PedidoDTO {
 
     public String getId() {
         return id;
+    }
+
+    public Integer getCodigo() {
+        return codigo;
     }
 
     public List<ComboDTO> getCombos() {

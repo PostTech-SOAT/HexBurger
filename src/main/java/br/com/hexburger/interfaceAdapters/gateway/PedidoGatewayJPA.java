@@ -42,7 +42,7 @@ public class PedidoGatewayJPA implements PedidoGateway {
         List<Combo> combos = ePedidoInterface.getCombos().stream().map(combo -> new Combo(combo.getId(), combo.getProdutosPedido().stream().map(p ->
                 new ProdutoPedido(p.getId(), p.getNome(), p.getDescricao(), p.getValor(), Categoria.valueOf(p.getCategoria()))).toList(),
                 combo.getValorTotal())).toList();
-        return new Pedido(ePedidoInterface.getId(), combos, ePedidoInterface.getValorTotal(), cliente, StatusPedido.RECEBIDO, ePedidoInterface.getDataPedido());
+        return new Pedido(ePedidoInterface.getId(), ePedidoInterface.getCodigo(), combos, ePedidoInterface.getValorTotal(), cliente, StatusPedido.RECEBIDO, ePedidoInterface.getDataPedido());
     }
 
 }

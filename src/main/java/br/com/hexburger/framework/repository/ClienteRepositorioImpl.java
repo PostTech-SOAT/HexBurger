@@ -20,7 +20,7 @@ public class ClienteRepositorioImpl implements ClienteRepositorioAdaptador {
     }
 
     @Override
-    public Optional<EClienteInterface> buscarCliente(String cpf) {
-        return repository.findById(cpf).map(eCliente -> eCliente);
+    public Optional<? extends EClienteInterface> buscarCliente(String cpf) {
+        return repository.findById(cpf);
     }
 }

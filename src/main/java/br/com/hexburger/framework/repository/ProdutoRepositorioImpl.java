@@ -22,18 +22,18 @@ public class ProdutoRepositorioImpl implements ProdutoRepositorioAdaptador {
     }
 
     @Override
-    public Optional<EProdutoInterface> buscarProdutoPorNome(String nome) {
-        return repository.findByNome(nome).map(eProduto -> eProduto);
+    public Optional<? extends EProdutoInterface> buscarProdutoPorNome(String nome) {
+        return repository.findByNome(nome);
     }
 
     @Override
-    public Optional<EProdutoInterface> buscarProdutoPorId(String id) {
-        return repository.findById(id).map(eProduto -> eProduto);
+    public Optional<? extends EProdutoInterface> buscarProdutoPorId(String id) {
+        return repository.findById(id);
     }
 
     @Override
-    public List<EProdutoInterface> buscarProdutosPorCategoria(String categoria) {
-        return repository.findByCategoria(categoria).stream().map(EProdutoInterface.class::cast).toList();
+    public List<? extends EProdutoInterface> buscarProdutosPorCategoria(String categoria) {
+        return repository.findByCategoria(categoria);
     }
 
     @Override
