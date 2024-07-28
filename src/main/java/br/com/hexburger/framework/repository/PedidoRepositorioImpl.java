@@ -8,6 +8,7 @@ import br.com.hexburger.interfaceAdapters.entidadeAdaptador.EPedidoInterface;
 import br.com.hexburger.interfaceAdapters.gateway.repositoryDTO.PedidoRepositoryDTO;
 import br.com.hexburger.interfaceAdapters.repositorioAdaptador.PedidoRepositorioAdaptador;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -32,7 +33,7 @@ public class PedidoRepositorioImpl implements PedidoRepositorioAdaptador {
 
     @Override
     public List<? extends EPedidoInterface> buscarPedidos() {
-        return repository.findAll();
+        return repository.findPedidosNaoFinalizados();
     }
 
     @Override

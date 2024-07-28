@@ -39,7 +39,7 @@ public class PedidoAPI {
     }
 
     @GetMapping
-    @Operation(summary = "Buscar todos os pedidos")
+    @Operation(summary = "Buscar todos os pedidos não finalizados, ordenando pelo status do pedido e data do pedido (ambos decrescentes)")
     public ResponseEntity<Object> buscarPedidos() {
         PedidoController controller = new PedidoController();
         return ResponseEntity.ok(controller.buscarPedidos(pedidoRepositorio));
