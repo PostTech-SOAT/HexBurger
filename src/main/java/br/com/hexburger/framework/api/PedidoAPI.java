@@ -45,4 +45,10 @@ public class PedidoAPI {
         return ResponseEntity.ok(controller.buscarPedidos(pedidoRepositorio));
     }
 
+    @GetMapping("/status/{id}")
+    @Operation(summary = "Buscar status do pedido")
+    public ResponseEntity<String> buscarStatusPedido(@PathVariable String id) {
+        PedidoController controller = new PedidoController();
+        return ResponseEntity.ok(controller.buscarStatusPedido(id, pedidoRepositorio));
+    }
 }

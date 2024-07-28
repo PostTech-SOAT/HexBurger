@@ -1,5 +1,6 @@
 package br.com.hexburger.interfaceAdapters.dto;
 
+import br.com.hexburger.dominio.entidade.StatusPagamento;
 import br.com.hexburger.dominio.entidade.StatusPedido;
 
 import java.math.BigDecimal;
@@ -20,15 +21,18 @@ public class PedidoDTO {
 
     private final StatusPedido status;
 
+    private final StatusPagamento statusPagamento;
+
     private final LocalDateTime dataPedido;
 
-    public PedidoDTO(String id, Integer codigo, List<ComboDTO> combos, BigDecimal valorTotal, ClienteDTO cliente, StatusPedido status, LocalDateTime dataPedido) {
+    public PedidoDTO(String id, Integer codigo, List<ComboDTO> combos, BigDecimal valorTotal, ClienteDTO cliente, StatusPedido status, StatusPagamento statusPagamento, LocalDateTime dataPedido) {
         this.id = id;
         this.codigo = codigo;
         this.combos = combos;
         this.valorTotal = valorTotal;
         this.cliente = cliente;
         this.status = status;
+        this.statusPagamento = statusPagamento;
         this.dataPedido = dataPedido;
     }
 
@@ -54,6 +58,10 @@ public class PedidoDTO {
 
     public StatusPedido getStatus() {
         return status;
+    }
+
+    public StatusPagamento getStatusPagamento() {
+        return statusPagamento;
     }
 
     public LocalDateTime getDataPedido() {

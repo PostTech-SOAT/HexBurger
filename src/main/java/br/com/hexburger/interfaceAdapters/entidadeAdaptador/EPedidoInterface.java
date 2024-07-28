@@ -18,6 +18,8 @@ public interface EPedidoInterface {
 
     String getStatus();
 
+    String getStatusPagamento();
+
     LocalDateTime getDataPedido();
 
 }

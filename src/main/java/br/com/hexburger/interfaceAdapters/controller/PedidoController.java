@@ -1,6 +1,7 @@
 package br.com.hexburger.interfaceAdapters.controller;
 
 import br.com.hexburger.application.useCase.pedido.BuscarPedidosUseCase;
+import br.com.hexburger.application.useCase.pedido.BuscarStatusPagamentoPedidoUseCase;
 import br.com.hexburger.application.useCase.pedido.CriarPedidoUseCase;
 import br.com.hexburger.dominio.entidade.Cliente;
 import br.com.hexburger.dominio.entidade.Combo;
@@ -25,6 +26,11 @@ public class PedidoController {
     public List<PedidoDTO> buscarPedidos(PedidoRepositorioAdaptador repositorio) {
         BuscarPedidosUseCase useCase = new BuscarPedidosUseCase(new PedidoGatewayJPA(repositorio));
         return useCase.buscarPedidos().stream().map(PedidoPresenter::toDTO).toList();
+    }
+
+    public String buscarStatusPedido(String id, PedidoRepositorioAdaptador repositorio) {
+        BuscarStatusPagamentoPedidoUseCase useCase = new BuscarStatusPagamentoPedidoUseCase(new PedidoGatewayJPA(repositorio));
+        return useCase.buscarStatusPagamentoPedido(id);
     }
 
     private Pedido dtoToDomain(PedidoDTO pedidoDTO) {

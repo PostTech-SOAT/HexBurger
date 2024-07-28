@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @AllArgsConstructor
@@ -24,13 +25,19 @@ public class PedidoRepositorioImpl implements PedidoRepositorioAdaptador {
                 new EProdutoPedido(p.getId(), p.getNome(), p.getDescricao(), p.getValor(), p.getCategoria().name())).toList(),
                 combo.getValorTotal())).toList();
         ECliente eCliente = new ECliente(pedidoRepositoryDTO.getCliente().getCpf(), pedidoRepositoryDTO.getCliente().getNome(), pedidoRepositoryDTO.getCliente().getEmail());
-        EPedido ePedido = new EPedido(pedidoRepositoryDTO.getId(), eCombos, pedidoRepositoryDTO.getValorTotal(), eCliente, pedidoRepositoryDTO.getStatus().name(), pedidoRepositoryDTO.getDataPedido());
+        EPedido ePedido = new EPedido(pedidoRepositoryDTO.getId(), eCombos, pedidoRepositoryDTO.getValorTotal(), eCliente, pedidoRepositoryDTO.getStatus().name(),
+                pedidoRepositoryDTO.getStatusPagamento().name(), pedidoRepositoryDTO.getDataPedido());
         return repository.save(ePedido);
     }
 
     @Override
     public List<? extends EPedidoInterface> buscarPedidos() {
         return repository.findAll();
+    }
+
+    @Override
+    public Optional<String> buscarStatusPagamentoPedido(String id) {
+        return repository.findStatusPagamentoById(id);
     }
 
 }

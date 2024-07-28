@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+import static br.com.hexburger.dominio.entidade.StatusPagamento.AGUARDANDO;
 import static br.com.hexburger.dominio.entidade.StatusPedido.RECEBIDO;
 import static java.time.LocalDateTime.now;
 
@@ -22,6 +23,8 @@ public class Pedido {
 
     private final StatusPedido status;
 
+    private final StatusPagamento statusPagamento;
+
     private final LocalDateTime dataPedido;
 
     public Pedido(List<Combo> combos, Cliente cliente) {
@@ -30,16 +33,18 @@ public class Pedido {
         this.valorTotal = combos.stream().map(Combo::getValorTotal).reduce(BigDecimal.ZERO, BigDecimal::add);
         this.cliente = cliente;
         this.status = RECEBIDO;
+        this.statusPagamento = AGUARDANDO;
         this.dataPedido = now();
     }
 
-    public Pedido(String id, Integer codigo, List<Combo> combos, BigDecimal valorTotal, Cliente cliente, StatusPedido status, LocalDateTime dataPedido) {
+    public Pedido(String id, Integer codigo, List<Combo> combos, BigDecimal valorTotal, Cliente cliente, StatusPedido status, StatusPagamento statusPagamento, LocalDateTime dataPedido) {
         this.id = id;
         this.codigo = codigo;
         this.combos = combos;
         this.valorTotal = valorTotal;
         this.cliente = cliente;
         this.status = status;
+        this.statusPagamento = statusPagamento;
         this.dataPedido = dataPedido;
     }
 
@@ -70,6 +75,10 @@ public class Pedido {
 
     public StatusPedido getStatus() {
         return status;
+    }
+
+    public StatusPagamento getStatusPagamento() {
+        return statusPagamento;
     }
 
     public LocalDateTime getDataPedido() {

@@ -10,6 +10,7 @@ import br.com.hexburger.interfaceAdapters.gateway.repositoryDTO.ProdutoPedidoRep
 import br.com.hexburger.interfaceAdapters.repositorioAdaptador.PedidoRepositorioAdaptador;
 
 import java.util.List;
+import java.util.Optional;
 
 public class PedidoGatewayJPA implements PedidoGateway {
 
@@ -29,12 +30,17 @@ public class PedidoGatewayJPA implements PedidoGateway {
         return repository.buscarPedidos().stream().map(this::entityToDomain).toList();
     }
 
+    @Override
+    public Optional<String> buscarStatusPagamentoPedido(String id) {
+        return repository.buscarStatusPagamentoPedido(id);
+    }
+
     private PedidoRepositoryDTO domainToRepositoryDto(Pedido pedido) {
         List<ComboRepositoryDTO> combosDTO = pedido.getCombos().stream().map(combo -> new ComboRepositoryDTO(combo.getId(), combo.getProdutos().stream().map(p ->
                 new ProdutoPedidoRepositoryDTO(p.getId(), p.getNome(), p.getDescricao(), p.getValor(), p.getCategoria())).toList(),
                 combo.getValorTotal())).toList();
         ClienteRepositoryDTO clienteDTO = new ClienteRepositoryDTO(pedido.getCliente().getCpf(), pedido.getCliente().getNome(), pedido.getCliente().getEmail());
-        return new PedidoRepositoryDTO(pedido.getId(), combosDTO, pedido.getValorTotal(), clienteDTO, pedido.getStatus(), pedido.getDataPedido());
+        return new PedidoRepositoryDTO(pedido.getId(), combosDTO, pedido.getValorTotal(), clienteDTO, pedido.getStatus(), pedido.getStatusPagamento(), pedido.getDataPedido());
     }
 
     private Pedido entityToDomain(EPedidoInterface ePedidoInterface) {
@@ -42,7 +48,7 @@ public class PedidoGatewayJPA implements PedidoGateway {
         List<Combo> combos = ePedidoInterface.getCombos().stream().map(combo -> new Combo(combo.getId(), combo.getProdutosPedido().stream().map(p ->
                 new ProdutoPedido(p.getId(), p.getNome(), p.getDescricao(), p.getValor(), Categoria.valueOf(p.getCategoria()))).toList(),
                 combo.getValorTotal())).toList();
-        return new Pedido(ePedidoInterface.getId(), ePedidoInterface.getCodigo(), combos, ePedidoInterface.getValorTotal(), cliente, StatusPedido.RECEBIDO, ePedidoInterface.getDataPedido());
+        return new Pedido(ePedidoInterface.getId(), ePedidoInterface.getCodigo(), combos, ePedidoInterface.getValorTotal(), cliente, StatusPedido.valueOf(ePedidoInterface.getStatus()), StatusPagamento.valueOf(ePedidoInterface.getStatusPagamento()), ePedidoInterface.getDataPedido());
     }
 
 }
