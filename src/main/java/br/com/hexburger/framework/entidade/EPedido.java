@@ -39,4 +39,13 @@ public class EPedido implements EPedidoInterface {
 
     private LocalDateTime dataPedido;
 
+    public EPedido(String id, List<ECombo> combos, BigDecimal valorTotal, ECliente cliente, String status, LocalDateTime dataPedido) {
+        this.id = id;
+        this.combos = combos;
+        this.valorTotal = valorTotal;
+        this.cliente = cliente;
+        this.status = status;
+        this.dataPedido = dataPedido;
+    }
+
 }
