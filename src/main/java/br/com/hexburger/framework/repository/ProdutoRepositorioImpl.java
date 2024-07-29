@@ -1,8 +1,8 @@
 package br.com.hexburger.framework.repository;
 
 import br.com.hexburger.framework.entidade.EProduto;
-import br.com.hexburger.interfaceAdapters.entidadeAdaptador.EProdutoInterface;
-import br.com.hexburger.interfaceAdapters.repositorioAdaptador.ProdutoRepositorioAdaptador;
+import br.com.hexburger.interfaceadapters.entidadeadaptador.EProdutoInterface;
+import br.com.hexburger.interfaceadapters.repositorioadaptador.ProdutoRepositorioAdaptador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

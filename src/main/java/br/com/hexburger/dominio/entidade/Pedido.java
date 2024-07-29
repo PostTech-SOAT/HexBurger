@@ -27,6 +27,10 @@ public class Pedido {
 
     private final LocalDateTime dataPedido;
 
+    private String qrCode;
+
+    private String idExternoPagamento;
+
     public Pedido(List<Combo> combos, Cliente cliente) {
         this.id = UUID.randomUUID().toString();
         this.combos = combos;
@@ -37,7 +41,8 @@ public class Pedido {
         this.dataPedido = now();
     }
 
-    public Pedido(String id, Integer codigo, List<Combo> combos, BigDecimal valorTotal, Cliente cliente, StatusPedido status, StatusPagamento statusPagamento, LocalDateTime dataPedido) {
+    public Pedido(String id, Integer codigo, List<Combo> combos, BigDecimal valorTotal, Cliente cliente, StatusPedido status,
+                  StatusPagamento statusPagamento, LocalDateTime dataPedido, String qrCode, String idExternoPagamento) {
         this.id = id;
         this.codigo = codigo;
         this.combos = combos;
@@ -46,6 +51,8 @@ public class Pedido {
         this.status = status;
         this.statusPagamento = statusPagamento;
         this.dataPedido = dataPedido;
+        this.qrCode = qrCode;
+        this.idExternoPagamento = idExternoPagamento;
     }
 
     public String getId() {
@@ -54,11 +61,6 @@ public class Pedido {
 
     public Integer getCodigo() {
         return codigo;
-    }
-
-    public void setCombos(List<Combo> combos) {
-        this.combos = combos;
-        this.valorTotal = combos.stream().map(Combo::getValorTotal).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public List<Combo> getCombos() {
@@ -85,6 +87,27 @@ public class Pedido {
         return dataPedido;
     }
 
+    public String getQrCode() {
+        return qrCode;
+    }
+
+    public String getIdExternoPagamento() {
+        return idExternoPagamento;
+    }
+
+    public void setCombos(List<Combo> combos) {
+        this.combos = combos;
+        this.valorTotal = combos.stream().map(Combo::getValorTotal).reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    public void setQrCode(String qrCode) {
+        this.qrCode = qrCode;
+    }
+
+    public void setIdExternoPagamento(String idExternoPagamento) {
+        this.idExternoPagamento = idExternoPagamento;
+    }
+
     public void validaPedido() {
         if (!validaCombos() || !validaValorTotal()) {
             throw new IllegalArgumentException("Pedido inválido");
@@ -100,4 +123,8 @@ public class Pedido {
         return valorTotal != null && valorTotal.compareTo(BigDecimal.ZERO) > 0;
     }
 
+    public void setInformacoesPagamento(String qrCode, String idExterno) {
+        this.setQrCode(qrCode);
+        this.setIdExternoPagamento(idExterno);
+    }
 }

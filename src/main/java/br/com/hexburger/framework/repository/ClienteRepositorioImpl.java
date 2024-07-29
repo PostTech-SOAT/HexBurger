@@ -1,8 +1,8 @@
 package br.com.hexburger.framework.repository;
 
 import br.com.hexburger.framework.entidade.ECliente;
-import br.com.hexburger.interfaceAdapters.entidadeAdaptador.EClienteInterface;
-import br.com.hexburger.interfaceAdapters.repositorioAdaptador.ClienteRepositorioAdaptador;
+import br.com.hexburger.interfaceadapters.entidadeadaptador.EClienteInterface;
+import br.com.hexburger.interfaceadapters.repositorioadaptador.ClienteRepositorioAdaptador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
