@@ -79,6 +79,6 @@ Para executar os deploy das charts basta você digitar no root do projeto:
 
 Docker Build: `docker build . -t hexburguer-api`
 
-postgres-deploy: `helm install postgres-deploy infra/helm/postgres-deploy/default-chart-0.1.0.tgz -f infra/helm/postgres-deploy/values.yaml`
+postgres-deploy: `helm install postgres-deploy infra/helm/postgres-deploy/charts/default-chart-0.1.0.tgz -f infra/helm/postgres-deploy/values.yaml`
 
-hexburguer-deploy: `helm install hexburguer-deploy infra/helm/hexburguer-deploy/default-chart-0.1.0.tgz -f infra/helm/hexburguer-deploy/values.yaml`
+hexburguer-deploy: `helm install hexburguer-deploy infra/helm/hexburguer-deploy/charts/default-chart-0.1.0.tgz -f infra/helm/hexburguer-deploy/values.yaml`
