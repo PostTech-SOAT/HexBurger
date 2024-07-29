@@ -3,11 +3,13 @@ package br.com.hexburger.framework.api;
 import br.com.hexburger.application.util.exception.ConflictException;
 import br.com.hexburger.application.util.exception.ResourceNotFoundException;
 import br.com.hexburger.framework.repository.ProdutoRepositorioImpl;
-import br.com.hexburger.interfaceAdapters.controller.ProdutoController;
-import br.com.hexburger.interfaceAdapters.dto.ProdutoDTO;
+import br.com.hexburger.interfaceadapters.controller.ProdutoController;
+import br.com.hexburger.interfaceadapters.dto.ProdutoDTO;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -42,7 +44,8 @@ public class ProdutoAPI {
 
     @PutMapping("/{id}")
     @Operation(summary = "Editar um produto")
-    public ResponseEntity<Object> editarProduto(@PathVariable String id, @RequestBody @io.swagger.v3.oas.annotations.parameters.RequestBody(
+    public ResponseEntity<Object> editarProduto(@PathVariable @Parameter(description = "ID do produto", required = true, schema = @Schema(type = "string", example = "877e03ba-eef1-4c49-9dc5-d3cc480426c8")) String id,
+                                                @RequestBody @io.swagger.v3.oas.annotations.parameters.RequestBody(
             description = "Objeto de exemplo para editar Produto", required = true,
             content = @Content(mediaType = "application/json", examples =
             @ExampleObject(value = "{\"nome\": \"Hex Burger\", \"descricao\": \"Pão e Hambuguer no formato hexagonal\", \"valor\": 20, \"categoria\": \"LANCHE\"}")))
@@ -59,7 +62,7 @@ public class ProdutoAPI {
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Remover um produto")
-    public ResponseEntity<Object> removerProduto(@PathVariable String id) {
+    public ResponseEntity<Object> removerProduto(@PathVariable @Parameter(description = "ID do produto", required = true, schema = @Schema(type = "string", example = "877e03ba-eef1-4c49-9dc5-d3cc480426c8")) String id) {
         try {
             ProdutoController controller = new ProdutoController();
             controller.removerProduto(id, repositorio);
@@ -70,8 +73,8 @@ public class ProdutoAPI {
     }
 
     @GetMapping("/{categoria}")
-    @Operation(summary = "Buscar produtos por categoria (LANCHE, BEBIDA, ACOMPANHAMENTO, SOBREMESA)")
-    public ResponseEntity<Object> buscarProdutosPorCategoria(@PathVariable String categoria) {
+    @Operation(summary = "Buscar produtos por categoria")
+    public ResponseEntity<Object> buscarProdutosPorCategoria(@PathVariable @Parameter(description = "Categoria do Produto", required = true, schema = @Schema(type = "string", allowableValues = {"LANCHE", "BEBIDA", "ACOMPANHAMENTO", "SOBREMESA"})) String categoria) {
         try {
             ProdutoController controller = new ProdutoController();
             return ResponseEntity.ok(controller.buscarProdutosPorCategoria(categoria.toUpperCase(), repositorio));

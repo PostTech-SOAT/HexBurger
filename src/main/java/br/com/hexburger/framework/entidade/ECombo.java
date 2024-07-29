@@ -1,6 +1,6 @@
 package br.com.hexburger.framework.entidade;
 
-import br.com.hexburger.interfaceAdapters.entidadeAdaptador.EComboInterface;
+import br.com.hexburger.interfaceadapters.entidadeadaptador.EComboInterface;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

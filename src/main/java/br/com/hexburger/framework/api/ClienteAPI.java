@@ -3,11 +3,13 @@ package br.com.hexburger.framework.api;
 import br.com.hexburger.application.util.exception.ConflictException;
 import br.com.hexburger.application.util.exception.ResourceNotFoundException;
 import br.com.hexburger.framework.repository.ClienteRepositorioImpl;
-import br.com.hexburger.interfaceAdapters.controller.ClienteController;
-import br.com.hexburger.interfaceAdapters.dto.ClienteDTO;
+import br.com.hexburger.interfaceadapters.controller.ClienteController;
+import br.com.hexburger.interfaceadapters.dto.ClienteDTO;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -42,7 +44,7 @@ public class ClienteAPI {
 
     @GetMapping("/{cpf}")
     @Operation(summary = "Buscar um cliente por CPF")
-    public ResponseEntity<ClienteDTO> buscarCliente(@PathVariable String cpf) {
+    public ResponseEntity<ClienteDTO> buscarCliente(@PathVariable @Parameter(description = "CPF do cliente", required = true, schema = @Schema(type = "string", example = "12345678901")) String cpf) {
         try {
             ClienteController controller = new ClienteController();
             return ResponseEntity.ok(controller.buscarCliente(cpf, repositorio));

@@ -1,6 +1,6 @@
 package br.com.hexburger.framework.entidade;
 
-import br.com.hexburger.interfaceAdapters.entidadeAdaptador.EProdutoInterface;
+import br.com.hexburger.interfaceadapters.entidadeadaptador.EProdutoInterface;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
