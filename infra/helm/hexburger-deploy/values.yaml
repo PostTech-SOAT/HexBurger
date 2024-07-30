@@ -1,7 +1,7 @@
 # Default values for postgres-chart.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-chartName: hexburguer
+chartName: hexburger
 
 # doesnt work if hpa is enabled
 replicaCount:
@@ -13,13 +13,13 @@ containers:
   - name: postgres_docker
 
 image:
-  repository: guirodriguero/hexburger
+  repository: hexburger
   pullPolicy: IfNotPresent
   tag: latest
 
 imagePullSecrets: []
-nameOverride: "hexburguer"
-fullnameOverride: "hexburguer-api"
+nameOverride: "hexburger"
+fullnameOverride: "hexburger-api"
 
 serviceAccount:
   create: true
@@ -88,7 +88,7 @@ readinessProbe:
   httpGet:
     path: /actuator/health/readiness
     port: 8080
-  initialDelaySeconds: 
+  initialDelaySeconds:
   failureThreshold: 3
   periodSeconds: 90
 
@@ -117,12 +117,12 @@ env:
   # - name:
   #   valueFrom:
   #     configMapKeyRef:
-  #       name: hexburguer-cm
+  #       name: hexburger-cm
   #       key:
 
 configMap:
   enabled: false
-  # name: hexburguer-cm
+  # name: hexburger-cm
   # data:
   #   key: value
 

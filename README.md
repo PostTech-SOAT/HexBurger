@@ -1,4 +1,4 @@
-# Hexburguer
+# Hexburger
 
 Integrantes:
 
@@ -37,7 +37,7 @@ O projeto iniciará na porta 8080 e a documentação das APIs pode ser consultad
 
 Arquitetura de infraestrutura do projeto:
 
-![arquitetura-infra-hexburguer.drawio-2.svg](./public/arquitetura-infra-hexburguer.drawio-2.svg)
+![arquitetura-infra-Hexburger.drawio-2.svg](./public/arquitetura-infra-Hexburger.drawio-2.svg)
 
 ### Infraestrutura
 
@@ -65,7 +65,7 @@ ConfigMap;
 
 ServiceAccount.
 
-hexburguer-deploy:
+Hexburger-deploy:
 
 Deployment;
 
@@ -77,8 +77,8 @@ ServiceAccount.
 
 Para executar os deploy das charts basta você digitar no root do projeto:
 
-Docker Build: `docker build . -t hexburguer-api`
+Docker Build: `docker build . -t Hexburger-api`
 
 postgres-deploy: `helm install postgres-deploy infra/helm/postgres-deploy/default-chart-0.1.0.tgz -f infra/helm/postgres-deploy/values.yaml`
 
-hexburguer-deploy: `helm install hexburguer-deploy infra/helm/hexburguer-deploy/default-chart-0.1.0.tgz -f infra/helm/hexburguer-deploy/values.yaml`
+Hexburger-deploy: `helm install Hexburger-deploy infra/helm/Hexburger-deploy/default-chart-0.1.0.tgz -f infra/helm/Hexburger-deploy/values.yaml`
