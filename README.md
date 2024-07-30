@@ -61,7 +61,7 @@ Docker Build: `docker build . -t hexburguer-api`
 
 O projeto iniciará na porta 8080 e a documentação das APIs pode ser consultada através do link [swagger-ui](http://localhost:8080/swagger-ui/index.html.)
 
-### Arquitetura do software:
+### Desenho da Arquitetura do software (contexto de Cliente):
 
 ![image](https://github.com/user-attachments/assets/c89bfad1-17db-4af6-ad4d-fbe6a602bbd8)
 
