@@ -30,6 +30,9 @@ Instruções para executar o projeto:
 O projeto iniciará na porta 8080 e a documentação das APIs pode ser consultada através do link [swagger-ui](http://localhost:8080/swagger-ui/index.html.)
 
 ### Tech Challenge segunda entrega:
+Vídeo: [2º entrega FIAP-POSTECH 7SOAT](https://youtu.be/8XMpgdVlYJY)
+
+Resultado dos testes: [Resultado](infra/test/reports/) (Abrir no Browser)
 
 Arquitetura de infraestrutura do projeto:
 
@@ -57,7 +60,9 @@ Docker Build: `docker build . -t hexburguer-api`
 
 **postgres-deploy:** `helm install postgres-deploy infra/helm/postgres-deploy/charts/default-chart-0.1.0.tgz -f infra/helm/postgres-deploy/values.yaml`
 
-**hexburguer-deploy:** `helm install hexburguer-deploy infra/helm/hexburguer-deploy/charts/default-chart-0.1.0.tgz -f infra/helm/hexburguer-deploy/values.yaml`
+**hexburguer-deploy:** `helm install hexburguer-deploy infra/helm/hexburguer-deploy/charts/default-chart-0.1.0.tgz -f infra/helm/hexburguer-deploy/values.yaml` 
+
+**hexburguer-metrics:** `kubectl apply -f infra/helm/hexburguer-deploy/metrics.yaml`
 
 O projeto iniciará na porta 8080 e a documentação das APIs pode ser consultada através do link [swagger-ui](http://localhost:8080/swagger-ui/index.html.)
 
