@@ -24,16 +24,20 @@ Instruções para executar o projeto:
 
 - Clonar o projeto
 - A partir do diretório raíz do projeto, executar o build e subir o a aplicação via docker compose
-
 - `docker compose up --build`
 
 O projeto iniciará na porta 8080 e a documentação das APIs pode ser consultada através do link [swagger-ui](http://localhost:8080/swagger-ui/index.html.)
 
 ### Tech Challenge segunda entrega:
 
+Vídeo: [2º entrega FIAP-POSTECH 7SOAT](https://youtu.be/8XMpgdVlYJY)
+Resultado dos testes: [Resultado](infra/test/reports/)
+
 Arquitetura de infraestrutura do projeto:
 
-![arquitetura-infra-hexburguer.drawio-2.svg](./public/arquitetura-infra-hexburguer.drawio-2.svg)
+![./public/arquitetura-infra-hexburguer.drawio-2.svg](./public/arquitetura-infra-hexburguer.drawio-2.svg)
+
+arquitetura-infra-hexburguer.drawio-2.svg
 
 ### Infraestrutura
 
@@ -53,73 +57,46 @@ Cada deploy foi separado por um diretório contendo cada um seu values.yaml que 
 
 Para executar os deploy das charts basta você digitar no root do projeto:
 
-Docker Build: `docker build . -t hexburguer-api`
-
 **postgres-deploy:** `helm install postgres-deploy infra/helm/postgres-deploy/charts/default-chart-0.1.0.tgz -f infra/helm/postgres-deploy/values.yaml`
 
-**hexburguer-deploy:** `helm install hexburguer-deploy infra/helm/hexburguer-deploy/charts/default-chart-0.1.0.tgz -f infra/helm/hexburguer-deploy/values.yaml`
+**hexburguer-deploy:** `helm install hexburguer-deploy infra/helm/hexburguer-deploy/charts/default-chart-0.1.0.tgz -f infra/helm/hexburguer-deploy/values.yaml` 
+
+**hexburguer-metrics:** `kubectl apply -f infra/helm/hexburguer-deploy/metrics.yaml`
 
 O projeto iniciará na porta 8080 e a documentação das APIs pode ser consultada através do link [swagger-ui](http://localhost:8080/swagger-ui/index.html.)
 
 ### Desenho da Arquitetura do software (contexto de Cliente):
 
-![image](https://github.com/user-attachments/assets/c89bfad1-17db-4af6-ad4d-fbe6a602bbd8)
+https://github.com/user-attachments/assets/c89bfad1-17db-4af6-ad4d-fbe6a602bbd8
+
+image
 
 A API pode ser usada na seguinte forma:
 
 1 - Criar Cliente (POST: v1/cliente):
+
 ```json
-{
-  "cpf": "12345678901",
-  "nome": "João da Silva",
-  "email": "joao@email.com"
-}
+{  "cpf": "12345678901",  "nome": "João da Silva",  "email": "joao@email.com"}
 ```
 
 2 - Criar um Produto (POST: v1/produto):
+
 ```json
-{
-  "nome": "Hex Burger",
-  "descricao": "Pão e Hambuguer no formato hexagonal",
-  "valor": 20,
-  "categoria": "LANCHE"
-}
+{  "nome": "Hex Burger",  "descricao": "Pão e Hambuguer no formato hexagonal",  "valor": 20,  "categoria": "LANCHE"}
 ```
 
 3 - Cria outro Produto (POST: v1/produto):
+
 ```json
-{
-  "nome": "Sorvete",
-  "descricao": "Sorvete Gelado",
-  "valor": 7,
-  "categoria": "SOBREMESA"
-}
+{  "nome": "Sorvete",  "descricao": "Sorvete Gelado",  "valor": 7,  "categoria": "SOBREMESA"}
 ```
 
 4 - Criar um Pedido (POST: v1/pedido):
+
 ```json
-{
-  "combos": [
-    {
-      "produtos": [
-        {
-          "id": "idProduto1"
-        },
-        {
-          "id": "idProduto2"
-        },
-      ]
-    }
-  ],
-  "cliente": {
-  "cpf": "12345678901",
-  "nome": "João da Silva",
-  "email": "joao@email.com"
-  }
-}
+{  "combos": [    {      "produtos": [        {          "id": "idProduto1"        },        {          "id": "idProduto2"        },      ]    }  ],  "cliente": {  "cpf": "12345678901",  "nome": "João da Silva",  "email": "joao@email.com"  }}
 ```
 
 5 - Verificar lista de Pedidos ordenadas por Status do Pedido e Data do Pedido: (GET: v1/pedido):
 
 6 - Verificar o Status do Pagamento do Pedido (GET: v1/pedido/status/{id}):
-
