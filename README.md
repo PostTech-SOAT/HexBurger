@@ -31,6 +31,7 @@ O projeto iniciará na porta 8080 e a documentação das APIs pode ser consultad
 ### Tech Challenge segunda entrega:
 
 Vídeo: [2º entrega FIAP-POSTECH 7SOAT](https://youtu.be/8XMpgdVlYJY)
+
 Resultado dos testes: [Resultado](infra/test/reports/)
 
 Arquitetura de infraestrutura do projeto:
