@@ -82,3 +82,59 @@ Docker Build: `docker build . -t hexburguer-api`
 postgres-deploy: `helm install postgres-deploy infra/helm/postgres-deploy/charts/default-chart-0.1.0.tgz -f infra/helm/postgres-deploy/values.yaml`
 
 hexburguer-deploy: `helm install hexburguer-deploy infra/helm/hexburguer-deploy/charts/default-chart-0.1.0.tgz -f infra/helm/hexburguer-deploy/values.yaml`
+
+O projeto iniciará na porta 8080 e a documentação das APIs pode ser consultada através do link [swagger-ui](http://localhost:8080/swagger-ui/index.html.)
+
+A API pode ser usada na seguinte forma:
+
+1 - Criar Cliente (POST: v1/cliente):
+```json
+{
+  "cpf": "12345678901",
+  "nome": "João da Silva",
+  "email": "joao@email.com"
+}
+```
+
+2 - Criar um Produto (POST: v1/produto):
+```json
+{
+  "nome": "Hex Burger",
+  "descricao": "Pão e Hambuguer no formato hexagonal",
+  "valor": 20,
+  "categoria": "LANCHE"
+}
+```
+
+3 - Cria outro Produto (POST: v1/produto):
+```json
+{
+  "nome": "Sorvete",
+  "descricao": "Sorvete Gelado",
+  "valor": 7,
+  "categoria": "SOBREMESA"
+}
+```
+
+4 - Criar um Pedido (POST: v1/pedido):
+```json
+{
+  "combos": [
+    {
+      "produtos": [
+        {
+          "id": "idProduto1"
+        },
+        {
+          "id": "idProduto2"
+        },
+      ]
+    }
+  ],
+  "cliente": {
+  "cpf": "12345678901",
+  "nome": "João da Silva",
+  "email": "joao@email.com"
+  }
+}
+```
