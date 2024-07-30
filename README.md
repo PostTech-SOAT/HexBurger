@@ -23,13 +23,9 @@ Link para o Miro: [DDD-Miro](https://miro.com/app/board/uXjVKYystBE=/)
 Instruções para executar o projeto:
 
 - Clonar o projeto
-- A partir do diretório raíz do projeto, executar o build do docker compose
+- A partir do diretório raíz do projeto, executar o build e subir o a aplicação via docker compose
 
-- `docker compose build`
-
-- Após a imagem devidamente criada, subir a aplicação via docker compose
-
-- `docker compose up`
+- `docker compose up --build`
 
 O projeto iniciará na porta 8080 e a documentação das APIs pode ser consultada através do link [swagger-ui](http://localhost:8080/swagger-ui/index.html.)
 
@@ -51,39 +47,23 @@ Foi criado uma chart com `helm create default-chart` no diretório `./infra/helm
 
 Cada deploy foi separado por um diretório contendo cada um seu values.yaml que será usado para ler as variáveis de release do chart.
 
-postgres-deploy:
+**postgres-deploy:** Deployment; Pv; Pvc; Service-ClusterIP; ConfigMap; ServiceAccount.
 
-Deployment;
-
-Pv;
-
-Pvc;
-
-Service-ClusterIP;
-
-ConfigMap;
-
-ServiceAccount.
-
-hexburguer-deploy:
-
-Deployment;
-
-HPA;
-
-Service-LoadBalancer;
-
-ServiceAccount.
+**hexburguer-deploy:** Deployment; HPA; Service-LoadBalancer; ServiceAccount.
 
 Para executar os deploy das charts basta você digitar no root do projeto:
 
 Docker Build: `docker build . -t hexburguer-api`
 
-postgres-deploy: `helm install postgres-deploy infra/helm/postgres-deploy/charts/default-chart-0.1.0.tgz -f infra/helm/postgres-deploy/values.yaml`
+**postgres-deploy:** `helm install postgres-deploy infra/helm/postgres-deploy/charts/default-chart-0.1.0.tgz -f infra/helm/postgres-deploy/values.yaml`
 
-hexburguer-deploy: `helm install hexburguer-deploy infra/helm/hexburguer-deploy/charts/default-chart-0.1.0.tgz -f infra/helm/hexburguer-deploy/values.yaml`
+**hexburguer-deploy:** `helm install hexburguer-deploy infra/helm/hexburguer-deploy/charts/default-chart-0.1.0.tgz -f infra/helm/hexburguer-deploy/values.yaml`
 
 O projeto iniciará na porta 8080 e a documentação das APIs pode ser consultada através do link [swagger-ui](http://localhost:8080/swagger-ui/index.html.)
+
+### Arquitetura do software:
+
+![image](https://github.com/user-attachments/assets/c89bfad1-17db-4af6-ad4d-fbe6a602bbd8)
 
 A API pode ser usada na seguinte forma:
 
@@ -138,3 +118,8 @@ A API pode ser usada na seguinte forma:
   }
 }
 ```
+
+5 - Verificar lista de Pedidos ordenadas por Status do Pedido e Data do Pedido: (GET: v1/pedido):
+
+6 - Verificar o Status do Pagamento do Pedido (GET: v1/pedido/status/{id}):
+
