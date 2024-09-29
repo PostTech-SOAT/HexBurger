@@ -12,16 +12,16 @@ RUN chown -R hexuser:hexgroup $APP_HOME
 RUN chmod -R 755 $APP_HOME
 
 #Copiando o pom.xml
-COPY pom.xml .
+#COPY pom.xml .
 
 #Copiando a aplicação
-COPY src ./src
+#COPY src ./src
 
 #Buildando a aplicação
-RUN mvn package -DskipTests
+#RUN mvn package -DskipTests
 
 #Expondo a porta 8080
 EXPOSE 8080
 
 #Executando a aplicação
-ENTRYPOINT ["java", "-jar", "/opt/app/target/hexburger-0.0.1-SNAPSHOT.jar", "-Xms512M", "-Xmx1024M"]
+ENTRYPOINT ["java", "-jar", "/opt/app/target/hexburger.jar", "-Xms512M", "-Xmx1024M"]
