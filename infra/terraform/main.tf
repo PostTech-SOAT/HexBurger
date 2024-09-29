@@ -7,3 +7,10 @@ module "helm_deploy" {
   ingress_config_host   = "teste.com"
 }
 
+module "kubernetes_environment" {
+  source                  = "./modules/kubernetes"
+  helm_service_template   = var.helm_service_template
+  kubernetes_secrets_data = var.kubernetes_secrets_data
+  is_there_config_map     = var.is_there_config_map
+  is_there_secret         = var.is_there_secret
+}

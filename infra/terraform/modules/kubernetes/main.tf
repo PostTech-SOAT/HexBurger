@@ -10,9 +10,9 @@ locals {
 }
 
 resource "kubernetes_config_map" "configmap_service" {
-  for_each = { for idx, service in var.helm_service_template : idx => service }
+  for_each = { for idx, service in var.helm_service_template : idx => service if var.is_there_config_map }
   metadata {
-    name      = "cm-${each.value.name}-env"
+    name      = "cm-${each.value.name}"
     namespace = each.value.namespaces
   }
 
@@ -20,9 +20,9 @@ resource "kubernetes_config_map" "configmap_service" {
 }
 
 resource "kubernetes_secret" "secret_services" {
-  for_each = { for idx, service in var.helm_service_template : idx => service }
+  for_each = { for idx, service in var.helm_service_template : idx => service if var.is_there_secret }
   metadata {
-    name      = "sc-${each.value.name}-env"
+    name      = "sc-${each.value.name}"
     namespace = each.value.namespaces
   }
 
