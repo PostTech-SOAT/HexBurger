@@ -128,3 +128,12 @@ A API pode ser usada na seguinte forma:
 
 6 - Verificar o Status do Pagamento do Pedido (GET: v1/pedido/status/{id}):
 
+<br>
+
+### Tech Challenge terceira entrega:
+Para esta terceira fase, podemos citar que a principal melhoria efetuada na estrutura do banco de dados da nossa aplicação da lanchonete HexBuguer se deve ao fato de que migramos a hospedagem da nossa base de dados. O que antes era uma instância local rodando em um Pod no Kubernetes, agora está em no ambiente de cloud da AWS, através do RDS. Com essa migração, o uso e a manutenção do banco de dados se torna muito mais fácil e confiável, além de oferecer mais opções de segurança e escalabilidade.
+<br>
+Quanto à escolha do banco, vale ressaltar que desde o início do projeto estamos trabalhando com uma aplicação web Java, e não foi mudado para esta fase. Isso se deve ao fato de que os bancos de dados relacionais se sobressaem nesse tipo de aplicação, visto que oferecem uma melhor integridade nos dados e confiabilidade das transações, além de gerenciarem eficientemente os dados de forma estruturada e de nos ajudar a tirar proveito dos conceitos do ACID (Atomicidade, Consistência, Isolamento e Durabilidade). Por conta dessas vantagens que o banco relacional oferece à aplicações web, o ecossistema Java possui diversas ferramentas que favorecem o uso desta abordagem (como por exemplo, ORMs como o Hibernate), o que também favorece para esta escolha.
+
+![image](https://github.com/user-attachments/assets/5e452d84-8ffb-46dd-9bc4-e81fac4407ba)
+
