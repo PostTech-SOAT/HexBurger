@@ -1,9 +1,12 @@
 variable "helm_service_template" {
   type = list(object({
-    name                 = string
-    namespaces           = string
-    helm_chart_key_value = map(string)
-    config_map_values    = map(string)
+    name                  = string
+    namespaces            = string
+    helm_chart_key_value  = map(string)
+    helm_chart_config_map = map(string)
+    is_there_config_map   = bool
+    is_there_secret       = bool
+    secret_type           = string
   }))
 }
 variable "application" {
@@ -15,15 +18,4 @@ variable "aws_region" {
 variable "ingress_nginx_name" {
   type = string
 }
-variable "kubernetes_config_map" {
-  type = map(string)
-}
-variable "kubernetes_secrets_data" {
-  type = map(string)
-}
-variable "is_there_config_map" {
-  type = bool
-}
-variable "is_there_secret" {
-  type = bool
-}
+

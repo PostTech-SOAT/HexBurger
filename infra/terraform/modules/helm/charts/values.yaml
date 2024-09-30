@@ -47,7 +47,7 @@ service:
   port: 8080
 
 ingress:
-  enabled: false
+  enabled: default-value
   className: ""
   annotations:
     kubernetes.io/ingress.class:
@@ -120,8 +120,8 @@ env:
   #       key:
 
 configMap:
-  enabled: false
-  name: hexburguer-cm
+  enabled: true
+  name: default-value
   # data:
   #   key: value
 

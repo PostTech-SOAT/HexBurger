@@ -9,13 +9,17 @@ aws_region  = "us-east-1"
 #                      HELM                                                  #
 ##############################################################################
 
-ingress_nginx_name = "hexburger-ingress"
+ingress_nginx_name = "ingress-nginx-controller"
 
 helm_service_template = [{
-  name       = "hexburger"
-  namespaces = "deploy"
+  name                = "hexburger"
+  namespaces          = "api"
+  is_there_config_map = true
+  is_there_secret     = true
+  secret_type         = "Opaque"
+
   helm_chart_key_value = {
-    "chartName"                                     = "hexburguer"
+    "chartName"                                     = "hexburger"
     "serviceAccount.create"                         = "true"
     "serviceAccount.name"                           = "hexburger-svc-acc"
     "service.type"                                  = "ClusterIP"
@@ -27,25 +31,30 @@ helm_service_template = [{
     "resources.requests.memory"                     = "256Mi"
     "resources.limits.cpu"                          = "200m"
     "resources.limits.memory"                       = "512Mi"
-    "liveProbe.initialDelaySeconds"                 = "300"
-    "liveProbe.periodSeconds"                       = "90"
-    "liveProbe.timeoutSeconds"                      = "30"
-    "readyProbe.initialDelaySeconds"                = "300"
-    "readyProbe.periodSeconds"                      = "90"
-    "readyProbe.timeoutSeconds"                     = "30"
+    "livenessProbe.initialDelaySeconds"             = "300"
+    "livenessProbe.periodSeconds"                   = "90"
+    "livenessProbe.timeoutSeconds"                  = "30"
+    "readinessProbe.initialDelaySeconds"            = "300"
+    "readinessProbe.periodSeconds"                  = "90"
+    "readinessProbe.timeoutSeconds"                 = "30"
     "autoscaling.enabled"                           = "true"
     "autoscaling.minReplicas"                       = "1"
     "autoscaling.maxReplicas"                       = "3"
     "autoscaling.targetCPUUtilizationPercentage"    = "70"
     "autoscaling.targetMemoryUtilizationPercentage" = "70"
-    "secretName"                                    = "hexburger-sm"
+    "secretName"                                    = "sc-hexburger"
     "configMap.enabled"                             = "true"
-    "configMap.name"                                = "hexburger-cm"
+    "configMap.name"                                = "cm-hexburger"
     "nameOverride"                                  = "hexburguer"
     "fullnameOverride"                              = "hexburguer-api"
   }
 
-  config_map_values = {}
+  helm_chart_config_map = {
+    "APPLICATION_NAME" = "hexburger"
+    "API_DOCS_PATH"    = "/api-docs"
+    "API_PORT"         = "8080"
+    "DATABASE_URL"     = "jdbc:postgresql://hexburger-db.c9u7v4efxe2d.us-east-1.rds.amazonaws.com:5432/postgres"
+  }
 
 
 }]
