@@ -67,16 +67,14 @@ runs:
       working-directory: ${{ inputs.terraform_directory }}
       shell: bash
       run: |
-        terragrunt init --terragrunt-non-interactive --terragrunt-config ./terragrunt/${{ inputs.tfvars_file_name }}
+        terragrunt init --terragrunt-non-interactive --terragrunt-config ./infra/terraform/terragrunt/${{ inputs.tfvars_file_name }}
 
     - name: Terraform Plan
       id: plan
       working-directory: ${{ inputs.terraform_directory }}
       shell: bash
       run: |
-        echo 'plan<<EOF' >> $GITHUB_OUTPUT
-        terragrunt plan --terragrunt-non-interactive --terragrunt-config ./terragrunt/${{ inputs.tfvars_file_name }} >> $GITHUB_OUTPUT
-        echo 'EOF' >> $GITHUB_OUTPUT
+        terragrunt plan --terragrunt-non-interactive --terragrunt-config ./infra/terraform/terragrunt/${{ inputs.tfvars_file_name }}
 
     - name: Upload Plan
       id: upload-plan
