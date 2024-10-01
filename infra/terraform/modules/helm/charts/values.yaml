@@ -109,21 +109,11 @@ tolerations: []
 
 affinity: {}
 
+configMapName: default-value
+
 secretName: default-value
 
-env:
-  []
-  # - name:
-  #   valueFrom:
-  #     configMapKeyRef:
-  #       name: hexburguer-cm
-  #       key:
-
-configMap:
-  enabled: true
-  name: default-value
-  # data:
-  #   key: value
+env: []
 
 persistentVolume:
   enabled: false
