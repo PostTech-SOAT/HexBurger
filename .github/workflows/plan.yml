@@ -1,4 +1,4 @@
-name: Terraform Plan
+name: Hexburger Actions
 
 on:
   pull_request:
@@ -38,46 +38,25 @@ jobs:
       with:
         name: Package
         path: build
-    
-  build_docker:
+
+  publish_ecr:
     needs: build_jar
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-      
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3.6.1
+      - uses: actions/checkout@v3
 
-      - name: Download Artefato
-        uses: actions/download-artifact@v4.1.8
+      - name: Publish to ECR
+        uses: ./.github/publish
         with:
-          name: Package
-          path: build
-      
-      - name: Login Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{secrets.DOCKERHUB_USERNAME}}
-          password: ${{secrets.DOCKERHUB_TOKEN}}
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_session_token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws_region: ${{ env.aws_region }}
+          aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
 
-
-      - name: Gera Tag Versao
-        run: |
-          echo "RELEASE_VERSION=$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)" >> $GITHUB_ENV
-
-      - name: Build and push
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          push: true
-          tags: | 
-            guirodriguero/hexburger:latest
-            guirodriguero/hexburger:${{ env.RELEASE_VERSION }}
-        
   terraform_plan:
-    needs: build_docker
+    needs: build_jar
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == false
     steps:
@@ -96,20 +75,3 @@ jobs:
           github_token: ${{ secrets.MY_GITHUB_TOKEN }}
           terragrunt_version: ${{ env.terragrunt_version }}
           tfvars_file_name: ${{ env.tfvars_file_name }}
-
-  publish_ecr:
-    needs: build_docker
-    runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == false
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Publish to ECR
-        uses: ./.github/publish
-        with:
-          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_session_token: ${{ secrets.AWS_SESSION_TOKEN }}
-          aws_region: ${{ env.aws_region }}
-          aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
-          image_tag: ${{ env.RELEASE_VERSION }}
