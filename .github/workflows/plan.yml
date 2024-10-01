@@ -30,6 +30,9 @@ jobs:
       - name: Build Hexburguer Jar
         run: |
           mvn package -DskipTests
+
+          ls -la
+          ls -la target
       - name: Gera Artefato
         uses:  actions/upload-artifact@v4
         with:
