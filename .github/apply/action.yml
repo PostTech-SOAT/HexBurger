@@ -84,7 +84,9 @@ runs:
       working-directory: ${{ inputs.terraform_directory }}
       shell: bash
       run: |
+
         terragrunt apply --terragrunt-non-interactive --terragrunt-config ./infra/terraform/terragrunt/${{ inputs.tfvars_file_name }} --auto-approve
+
 
     # - name: Comment PR
     #   id: comment
