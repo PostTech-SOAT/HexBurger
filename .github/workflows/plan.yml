@@ -10,6 +10,7 @@ env:
   terragrunt_version: 0.67.10
   tfvars_file_name: deploy.hcl
   pr_number: ${{ github.event.number }}
+  eks_cluster_name: hexburger-eks-cluster
 
 jobs:
   build_jar:
@@ -72,3 +73,4 @@ jobs:
           github_token: ${{ secrets.MY_GITHUB_TOKEN }}
           terragrunt_version: ${{ env.terragrunt_version }}
           tfvars_file_name: ${{ env.tfvars_file_name }}
+          eks_cluster_name: ${{ env.eks_cluster_name }}
