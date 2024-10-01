@@ -16,9 +16,6 @@ inputs:
     aws_account_id:
         description: "ID da conta da AWS"
         required: true
-    image_tag:
-        description: "Tag da imagem"
-        required: true
 runs:
   using: composite
   steps:
@@ -43,7 +40,7 @@ runs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: hexburger
-        IMAGE_TAG: ${{ inputs.image_tag }}
+        IMAGE_TAG: latest
       run: |
         docker build -t "$ECR_REPOSITORY:$IMAGE_TAG" .
         docker push "$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
