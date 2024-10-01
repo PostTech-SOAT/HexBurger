@@ -1,4 +1,4 @@
-FROM maven:3.9.6-amazoncorretto-21-debian
+FROM openjdk:21-slim
 
 WORKDIR /opt/app
 
@@ -15,4 +15,4 @@ RUN chmod -R 755 $APP_HOME
 EXPOSE 8080
 
 #Executando a aplicação
-ENTRYPOINT ["java", "-jar", "/opt/app/target/hexburger.jar", "-Xms512M", "-Xmx1024M"]
+ENTRYPOINT ["java", "-jar", "/opt/app/target/hexburger-0.0.1-SNAPSHOT.jar", "-Xms512M", "-Xmx1024M"]
