@@ -43,7 +43,7 @@ runs:
         IMAGE_TAG: ${{ github.run_number }}
       run: |
         docker build -t "$ECR_REPOSITORY" .
-        docker tag "$ECR_REPOSITORY:$IMAGE_TAG" "$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+        docker tag "$ECR_REPOSITORY:latest" "$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
         docker push "$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
         echo "IMAGE $IMAGE_TAG is pushed to $ECR_REGISTRY/$ECR_REPOSITORY"
         echo "image_tag=$IMAGE_TAG" 
