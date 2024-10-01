@@ -139,4 +139,5 @@ Quanto à escolha do banco, vale ressaltar que desde o início do projeto estamo
 
 Arquitetura AWS:
 <br>
-![image](https://github.com/user-attachments/assets/64e04cab-c2e2-452d-b7b0-9c4f9c733395)
+![image](https://github.com/user-attachments/assets/d9454568-2468-4f4b-a64f-7b98daed2cda)
+
