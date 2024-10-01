@@ -1,7 +1,7 @@
 module "helm_deploy" {
   source                = "./modules/helm"
   helm_service_template = var.helm_service_template
-  container_image_tag   = "latest" /*data.aws_ecr_repository.image_tag.most_recent_image_tags[0]*/
+  container_image_tag   = data.aws_ecr_repository.image_tag.most_recent_image_tags[0]
   container_image_url   = data.aws_ecr_repository.image_tag.repository_url
   ingress_config_host   = data.kubernetes_service.ingress_nginx.status.0.load_balancer.0.ingress.0.hostname
   config_map_name       = module.kubernetes_environment.config_map_name[0]

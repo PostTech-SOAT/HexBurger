@@ -41,8 +41,6 @@ runs:
       run: |
         mvn package -DskipTests
 
-        ls -la
-        ls -la target
     - name: Gera Artefato
       uses: actions/upload-artifact@v4
       with:
@@ -62,9 +60,6 @@ runs:
         ECR_REPOSITORY: hexburger
         IMAGE_TAG: ${{ github.run_number }}
       run: |
-
-        ls -la
-        ls -la target
 
         docker build -t "$ECR_REPOSITORY" .
         docker tag "$ECR_REPOSITORY:latest" "$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
