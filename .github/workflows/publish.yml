@@ -1,7 +1,9 @@
 name: Publish ECR
 
 on:
-  pull_request:
+  push:
+    branches:
+      - main
 
 env:
   aws_region: us-east-1
