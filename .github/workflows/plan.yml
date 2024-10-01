@@ -30,8 +30,6 @@ jobs:
       - name: Build Hexburguer Jar
         run: |
           mvn package -DskipTests
-          mkdir build
-          cp target/*.jar build/hexburguer.jar
       - name: Gera Artefato
         uses:  actions/upload-artifact@v4
         with:
