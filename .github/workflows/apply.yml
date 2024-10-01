@@ -4,17 +4,14 @@ on:
   push:
     branches:
       - main
-  # pull_request_review:
-  #   types: [submitted]
+
 env:
   aws_region: us-east-1
   terraform_version: 1.6.5
-  terraform_directory: ./infra/terraform
+  terraform_directory: ./
   terragrunt_version: 0.67.10
   tfvars_file_name: deploy.hcl
   eks_cluster_name: hexburger-eks-cluster
-
-  pr_number: ${{ github.event.pull_request.number }}
 
 
 jobs:
@@ -28,9 +25,6 @@ jobs:
         with:
           terraform_version: ${{ env.terraform_version }}
           terraform_directory: ${{ env.terraform_directory }}
-
-          pr_number: ${{ steps.find_pr.outputs.number }}
-
           aws_region: ${{ env.aws_region }}
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
