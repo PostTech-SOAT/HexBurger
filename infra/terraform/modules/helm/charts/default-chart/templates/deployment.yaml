@@ -52,10 +52,11 @@ spec:
           volumeMounts:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-          {{- with .Values.env }}
-          env:
-            {{- toYaml . | nindent 12 }}  
-          {{- end }}          
+          envFrom:
+            - configMapRef:
+                name: {{ .Values.configMapName }}
+            - secretRef:
+                name: {{ .Values.secretName }}          
       {{- with .Values.volumes }}
       volumes:
         {{- toYaml . | nindent 8 }}
