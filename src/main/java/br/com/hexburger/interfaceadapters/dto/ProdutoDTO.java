@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 public class ProdutoDTO {
 
-    private String id;
+    private final String id;
 
     private final String nome;
 
@@ -27,10 +27,6 @@ public class ProdutoDTO {
 
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getNome() {

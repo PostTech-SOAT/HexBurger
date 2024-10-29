@@ -33,7 +33,7 @@ public class Cliente {
         }
     }
 
-    private boolean validaCpf() {
+    private boolean validaCpf() { //TODO: CPF não deveria permitir letras
         return cpf != null && cpf.length() == 11;
     }
 

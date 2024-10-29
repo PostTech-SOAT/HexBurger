@@ -1,7 +1,7 @@
 package br.com.hexburger.interfaceadapters.repositorioadaptador;
 
 import br.com.hexburger.interfaceadapters.entidadeadaptador.EPedidoInterface;
-import br.com.hexburger.interfaceadapters.gateway.repositoryDTO.PedidoRepositoryDTO;
+import br.com.hexburger.interfaceadapters.gateway.repositorydto.PedidoRepositoryDTO;
 
 import java.util.List;
 import java.util.Optional;

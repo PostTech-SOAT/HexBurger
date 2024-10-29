@@ -2,7 +2,9 @@ package br.com.hexburger.dominio.entidade;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 import static br.com.hexburger.dominio.entidade.StatusPagamento.AGUARDANDO;
@@ -33,8 +35,9 @@ public class Pedido {
 
     public Pedido(List<Combo> combos, Cliente cliente) {
         this.id = UUID.randomUUID().toString();
+        combos = combos != null ? combos : Collections.emptyList();
         this.combos = combos;
-        this.valorTotal = combos.stream().map(Combo::getValorTotal).reduce(BigDecimal.ZERO, BigDecimal::add);
+        this.valorTotal = combos.stream().map(Combo::getValorTotal).filter(Objects::nonNull).reduce(BigDecimal.ZERO, BigDecimal::add);
         this.cliente = cliente;
         this.status = RECEBIDO;
         this.statusPagamento = AGUARDANDO;

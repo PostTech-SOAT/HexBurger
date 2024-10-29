@@ -1,4 +1,4 @@
-package br.com.hexburger.interfaceadapters.gateway.repositoryDTO;
+package br.com.hexburger.interfaceadapters.gateway.repositorydto;
 
 import java.math.BigDecimal;
 import java.util.List;

@@ -1,4 +1,4 @@
-package br.com.hexburger.interfaceadapters.gateway.repositoryDTO;
+package br.com.hexburger.interfaceadapters.gateway.repositorydto;
 
 import br.com.hexburger.dominio.entidade.Categoria;
 

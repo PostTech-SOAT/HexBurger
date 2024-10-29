@@ -3,10 +3,10 @@ package br.com.hexburger.interfaceadapters.gateway;
 import br.com.hexburger.application.interfacegateway.PedidoGateway;
 import br.com.hexburger.dominio.entidade.*;
 import br.com.hexburger.interfaceadapters.entidadeadaptador.EPedidoInterface;
-import br.com.hexburger.interfaceadapters.gateway.repositoryDTO.ClienteRepositoryDTO;
-import br.com.hexburger.interfaceadapters.gateway.repositoryDTO.ComboRepositoryDTO;
-import br.com.hexburger.interfaceadapters.gateway.repositoryDTO.PedidoRepositoryDTO;
-import br.com.hexburger.interfaceadapters.gateway.repositoryDTO.ProdutoPedidoRepositoryDTO;
+import br.com.hexburger.interfaceadapters.gateway.repositorydto.ClienteRepositoryDTO;
+import br.com.hexburger.interfaceadapters.gateway.repositorydto.ComboRepositoryDTO;
+import br.com.hexburger.interfaceadapters.gateway.repositorydto.PedidoRepositoryDTO;
+import br.com.hexburger.interfaceadapters.gateway.repositorydto.ProdutoPedidoRepositoryDTO;
 import br.com.hexburger.interfaceadapters.repositorioadaptador.PedidoRepositorioAdaptador;
 
 import java.util.List;

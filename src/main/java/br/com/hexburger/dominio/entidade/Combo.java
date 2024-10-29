@@ -1,7 +1,9 @@
 package br.com.hexburger.dominio.entidade;
 
 import java.math.BigDecimal;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 import static java.util.Collections.frequency;
@@ -22,8 +24,9 @@ public class Combo {
 
     public Combo(List<ProdutoPedido> produtos) {
         this.id = UUID.randomUUID().toString();
+        produtos = produtos != null ? produtos : Collections.emptyList();
         this.produtos = produtos;
-        this.valorTotal = produtos.stream().map(ProdutoPedido::getValor).reduce(BigDecimal.ZERO, BigDecimal::add);
+        this.valorTotal = produtos.stream().map(ProdutoPedido::getValor).filter(Objects::nonNull).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public String getId() {

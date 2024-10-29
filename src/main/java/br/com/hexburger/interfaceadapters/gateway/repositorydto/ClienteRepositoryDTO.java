@@ -1,4 +1,4 @@
-package br.com.hexburger.interfaceadapters.gateway.repositoryDTO;
+package br.com.hexburger.interfaceadapters.gateway.repositorydto;
 
 public class ClienteRepositoryDTO {
 

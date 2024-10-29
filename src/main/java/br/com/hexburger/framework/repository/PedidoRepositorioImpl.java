@@ -5,7 +5,7 @@ import br.com.hexburger.framework.entidade.ECombo;
 import br.com.hexburger.framework.entidade.EPedido;
 import br.com.hexburger.framework.entidade.EProdutoPedido;
 import br.com.hexburger.interfaceadapters.entidadeadaptador.EPedidoInterface;
-import br.com.hexburger.interfaceadapters.gateway.repositoryDTO.PedidoRepositoryDTO;
+import br.com.hexburger.interfaceadapters.gateway.repositorydto.PedidoRepositoryDTO;
 import br.com.hexburger.interfaceadapters.repositorioadaptador.PedidoRepositorioAdaptador;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
