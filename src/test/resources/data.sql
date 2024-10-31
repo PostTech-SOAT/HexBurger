@@ -6,6 +6,9 @@ INSERT INTO CLIENTE (CPF, NOME, EMAIL) VALUES
 INSERT INTO PRODUTO (ID, NOME, DESCRICAO, VALOR, CATEGORIA) VALUES
                                            ('5c4c83cb-f1e8-4182-8601-281323f00111', 'Hex Burger', 'Pão e Hambuguer no formato hexagonal', 15.00, 'LANCHE'),
                                            ('2b68f2cc-75c5-4ed7-a712-0a6a6443127b', 'Hex Burger Duplo', 'Pão e dois Hambugueres no formato hexagonal', 27.00, 'LANCHE'),
+                                           ('41980234-5f97-4443-9c2e-9afa3600bcfb', 'Hex Burger Para Remover', 'Pão e dois Hambugueres no formato hexagonal', 27.00, 'LANCHE'),
+                                           ('56d4e6b1-b1bd-44e6-9818-e459f230e3e4', 'Hex Burger Para Editar', 'Pão e dois Hambugueres no formato hexagonal', 27.00, 'LANCHE'),
+                                           ('e5adfabe-d80c-42ce-8d72-054be337693b', 'Hex Burger Para Editar 2', 'Pão e dois Hambugueres no formato hexagonal', 27.00, 'LANCHE'),
                                            ('92ffdcbf-f74c-4b05-93c5-be96ef1d9326', 'Hex Chicken', 'Pão e Hambuguer de frango no formato hexagonal', 18.00, 'LANCHE'),
                                            ('84ee2567-fe65-455b-bf23-9543d4e86be1', 'Hex Cola', 'Refrigerante sabor cola', 6.00, 'BEBIDA'),
                                            ('a1fe5443-3bc7-4cb0-8ffe-a1dc0bf8768c', 'Água', 'Água', 4.00, 'BEBIDA'),

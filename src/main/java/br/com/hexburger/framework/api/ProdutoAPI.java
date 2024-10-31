@@ -78,6 +78,8 @@ public class ProdutoAPI {
         try {
             ProdutoController controller = new ProdutoController();
             return ResponseEntity.ok(controller.buscarProdutosPorCategoria(categoria.toUpperCase(), repositorio));
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(e.getMessage(), BAD_REQUEST);
         } catch (ResourceNotFoundException e) {
             return new ResponseEntity<>(e.getMessage(), NOT_FOUND);
         }
