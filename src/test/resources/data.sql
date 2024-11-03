@@ -16,6 +16,7 @@ INSERT INTO PRODUTO (ID, NOME, DESCRICAO, VALOR, CATEGORIA) VALUES
                                            ('8c722a6a-57d6-4ea1-9d98-79e78835837b', 'Hex Nuggets', 'Nuggets no formato hexagonal', 12.00, 'ACOMPANHAMENTO'),
                                            ('7cbc859a-a702-4f64-9f81-2136c338338c', 'Hex Gelatto', 'Sorvete de creme 200ml', 15.00, 'SOBREMESA'),
                                            ('f4cc8aa2-2670-4e12-b3ed-ec281fa50411', 'Hex Donut', 'Donut no formato hexagonal', 8.00, 'SOBREMESA');
+-- Pedido Recebido
 
 INSERT INTO PRODUTO_PEDIDO (ID, NOME, DESCRICAO, VALOR, CATEGORIA) VALUES
                                            ('69d8ffc2-e77c-45e2-8245-3a86664e1f5d', 'Hex Burger', 'Pão e Hambuguer no formato hexagonal', 15.00, 'LANCHE'),
@@ -31,8 +32,25 @@ INSERT INTO combo_produtos_pedido (ecombo_id, produtos_pedido_id) VALUES
                                                                       ('2b8be9d3-2f01-47c7-ba47-8a621869a4ec', '1c365852-b801-4081-965f-c4a27c92377c'),
                                                                       ('2b8be9d3-2f01-47c7-ba47-8a621869a4ec', '236c13a3-b3f2-4114-96f1-75c9a9d72ea3'),
                                                                       ('2b8be9d3-2f01-47c7-ba47-8a621869a4ec', 'faf7413f-5a19-4b1c-a751-84254ab20722');
+
 INSERT INTO PEDIDO (ID, CODIGO, ID_EXTERNO_PAGAMENTO, QR_CODE, STATUS, STATUS_PAGAMENTO, CLIENTE_CPF, VALOR_TOTAL, DATA_PEDIDO) VALUES
                                            ('9c3e7112-ac5c-413a-9e24-22688bf60976', '1', null, null, 'RECEBIDO', 'AGUARDANDO', '12345678900', 44.00, '2024-10-30 12:00:00');
 
 INSERT INTO pedido_combos (epedido_id, combos_id) VALUES
                                            ('9c3e7112-ac5c-413a-9e24-22688bf60976', '2b8be9d3-2f01-47c7-ba47-8a621869a4ec');
+
+-- Pedido Em Preparacao
+
+INSERT INTO PRODUTO_PEDIDO (ID, NOME, DESCRICAO, VALOR, CATEGORIA) VALUES
+                                                                       ('6714e8b4-7d25-4731-974f-8a9723ea74a1', 'Hex Donut', 'Donut no formato hexagonal', 8.00, 'SOBREMESA');
+
+INSERT INTO COMBO (ID, VALOR_TOTAL) VALUES ('16a17800-9c94-455a-b805-7bc54be75d99', 8.00);
+
+INSERT INTO combo_produtos_pedido (ecombo_id, produtos_pedido_id) VALUES
+                                                                      ('16a17800-9c94-455a-b805-7bc54be75d99', '6714e8b4-7d25-4731-974f-8a9723ea74a1');
+
+INSERT INTO PEDIDO (ID, CODIGO, ID_EXTERNO_PAGAMENTO, QR_CODE, STATUS, STATUS_PAGAMENTO, CLIENTE_CPF, VALOR_TOTAL, DATA_PEDIDO) VALUES
+    ('1537484e-33d9-415e-b095-82dbf1f74294', '2', '4797f322-9f28-4259-a746-a37c70c0b48e', 'kdjnfoafhaifjsuiyhjnyghhjukim', 'EM_PREPARACAO', 'APROVADO', '12345678900', 8.00, '2024-10-30 12:45:00');
+
+INSERT INTO pedido_combos (epedido_id, combos_id) VALUES
+    ('1537484e-33d9-415e-b095-82dbf1f74294', '16a17800-9c94-455a-b805-7bc54be75d99');

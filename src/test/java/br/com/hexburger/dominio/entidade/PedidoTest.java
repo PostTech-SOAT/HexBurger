@@ -87,7 +87,7 @@ class PedidoTest {
 
         Pedido pedido = new Pedido(null, criarCliente());
 
-        assertThat(pedido.getCombos(), is(notNullValue())); //O construturo acima transforma combos nulo em lista vazia
+        assertThat(pedido.getCombos(), is(notNullValue()));
         assertThrows(IllegalArgumentException.class, pedido::validaPedido);
 
     }

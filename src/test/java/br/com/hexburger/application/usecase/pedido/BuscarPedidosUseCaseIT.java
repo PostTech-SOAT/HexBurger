@@ -1,6 +1,7 @@
 package br.com.hexburger.application.usecase.pedido;
 
 import br.com.hexburger.application.interfacegateway.PedidoGateway;
+import br.com.hexburger.dominio.entidade.Pedido;
 import br.com.hexburger.framework.repository.PedidoRepositorioImpl;
 import br.com.hexburger.framework.repository.PedidoRepository;
 import br.com.hexburger.interfaceadapters.gateway.PedidoGatewayJPA;
@@ -10,6 +11,8 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+
+import java.util.List;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -36,9 +39,10 @@ class BuscarPedidosUseCaseIT {
     @Test
     void deveBuscarPedidos() {
 
-//        List<Pedido> pedidos = useCase.buscarPedidos();
-//
-//        assertThat(pedidos, is(notNullValue()));
+        List<Pedido> pedidos = useCase.buscarPedidos();
+
+        // todo adicionar os inserts de um pedido para cada status de pedido e comparar a igualdade nesse teste
+
 
     }
 
